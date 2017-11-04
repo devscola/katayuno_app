@@ -1,0 +1,10 @@
+<center><h1>Katayuno</h1></center>
+<p>
+  <li>
+    <% @katas.each do |kata| %>
+      <ul>
+        <%= link_to kata.title, kata_path(kata.id) %>
+      </ul>
+    <% end %>
+  </li>
+</p>

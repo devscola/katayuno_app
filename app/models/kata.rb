@@ -1,0 +1,2 @@
+class Kata < ApplicationRecord
+end
