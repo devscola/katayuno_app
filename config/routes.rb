@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   get '/index' => 'katas#index', as: :katas
   get '/show/kata/:id' => 'katas#show', as: :kata
+  get '/new/kata' => 'katas#new', as: :new_kata
+  post '/create/kata' => 'katas#create', as: :create_kata
 end
