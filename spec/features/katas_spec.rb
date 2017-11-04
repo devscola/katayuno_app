@@ -24,8 +24,8 @@ describe 'Katas' do
 
     visit katas_path
     click_on(:add_kata)
-    fill_in(:title, with: title)
-    fill_in(:description, with: description)
+    fill_in(:kata_title, with: title)
+    fill_in(:kata_description, with: description)
     click_on(:save)
 
     expect(page).to have_content(title)

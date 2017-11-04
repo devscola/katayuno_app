@@ -1,12 +1,6 @@
 <center><h1>New Kata</h1></center>
 <p>
   <center>
-    <%= form_tag katas_path do %>
-      <%= label_tag :title %>
-      <%= text_field_tag :title %>
-      <%= label_tag :description %>
-      <%= text_area_tag :description %>
-      <%= submit_tag :save %>
-    <% end %>
+    <%= render 'form', note: @kata %>
   </center>
 </p>
