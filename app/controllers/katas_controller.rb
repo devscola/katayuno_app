@@ -19,4 +19,21 @@ class KatasController < ApplicationController
 
     redirect_to kata_path(kata.id)
   end
+
+  def edit
+    @kata = Kata.find(params[:id])
+  end
+
+  def update
+    kata = Kata.find(params[:id])
+    kata.update(kata_params)
+
+    redirect_to kata_path(kata.id)
+  end
+
+  private
+
+  def kata_params
+    params.require(:kata).permit(:title, :description)
+  end
 end
