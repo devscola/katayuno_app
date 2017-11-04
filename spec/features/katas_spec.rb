@@ -50,4 +50,20 @@ describe 'Katas' do
     expect(page).to have_content(edited_title)
     expect(page).to have_content(edited_description)
   end
+
+  it 'can de deleted' do
+    title = 'Deleteable Kata'
+    description = 'This kata should be deleted'
+    kata = Kata.new(
+      title: title,
+      description: description
+    )
+    kata.save
+
+    visit katas_path
+    click_on(:delete)
+
+    expect(page).not_to have_content(title)
+    expect(page).not_to have_content(description)
+  end
 end

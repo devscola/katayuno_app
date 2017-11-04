@@ -31,6 +31,13 @@ class KatasController < ApplicationController
     redirect_to kata_path(kata.id)
   end
 
+  def destroy
+    kata = Kata.find(params[:id])
+    kata.destroy
+
+    redirect_to katas_path
+  end
+
   private
 
   def kata_params
