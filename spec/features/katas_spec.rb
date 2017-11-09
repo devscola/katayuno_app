@@ -2,7 +2,11 @@ require 'rails_helper'
 require 'capybara'
 
 describe 'Katas' do
-  context 'when is not logged' do
+  context 'when is non-user or normal user' do
+    before(:each) do
+      log_in_user
+    end
+
     it 'can be visited' do
       title = 'First Kata'
       description = 'Description for First Kata'
@@ -38,11 +42,24 @@ describe 'Katas' do
       expect(page).not_to have_content('edit')
       expect(page).not_to have_content('delete')
     end
+
+    def log_in_user
+      user = User.new(
+        email: 'user@test.com',
+        password: '12345678',
+        password_confirmation: '12345678'
+      )
+      user.save
+      visit new_user_session_path
+      fill_in(:user_email, with: user.email)
+      fill_in(:user_password, with: user.password)
+      find('input[name="commit"]').click
+    end
   end
 
   context 'when user is logged as admin' do
     before(:each) do
-      log_in_user
+      log_in_admin
     end
 
     it 'can be created' do
@@ -94,7 +111,7 @@ describe 'Katas' do
       expect(page).not_to have_content(description)
     end
 
-    def log_in_user
+    def log_in_admin
       user = User.new(
         email: 'user@test.com',
         password: '12345678',
