@@ -2,23 +2,45 @@ require 'rails_helper'
 require 'capybara'
 
 describe 'Katas' do
-  it 'can be visited' do
-    title = 'First Kata'
-    description = 'Description for First Kata'
-    kata = Kata.new(
-      title: title,
-      description: description
-    )
-    kata.save
+  context 'when is not logged' do
+    it 'can be visited' do
+      title = 'First Kata'
+      description = 'Description for First Kata'
+      kata = Kata.new(
+        title: title,
+        description: description
+      )
+      kata.save
 
-    visit katas_path
-    click_on(title)
+      visit katas_path
+      click_on(title)
 
-    expect(page).to have_content(title)
-    expect(page).to have_content(description)
+      expect(page).to have_content(title)
+      expect(page).to have_content(description)
+    end
+
+    it 'cannot add a new kata' do
+
+      visit katas_path
+
+      expect(page).not_to have_content('add_kata')
+    end
+
+    it 'cannot edit or delete katas' do
+      kata = Kata.new(
+        title: 'First Kata',
+        description: 'Description for First Kata'
+      )
+      kata.save
+
+      visit katas_path
+
+      expect(page).not_to have_content('edit')
+      expect(page).not_to have_content('delete')
+    end
   end
 
-  context 'when user is logged' do
+  context 'when user is logged as admin' do
     before(:each) do
       log_in_user
     end
@@ -78,6 +100,7 @@ describe 'Katas' do
         password: '12345678',
         password_confirmation: '12345678'
       )
+      user.become_admin
       user.save
       visit new_user_session_path
       fill_in(:user_email, with: user.email)

@@ -1,13 +1,13 @@
 
 <p>
-  <li>
+  <ul>
     <% @katas.each do |kata| %>
-      <ul>
-        <%= link_to kata.title, kata_path(kata.id) %> - <%= link_to :edit, edit_kata_path(kata.id) %> - <%= link_to :delete, kata_path(kata.id), method: :delete  %>
-      </ul>
+      <li>
+        <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
+      </li>
     <% end %>
-  </li>
+  </lu>
 </p>
 <p>
-  <%= link_to :add_kata, new_kata_path %>
+  <%= add_kata_button %>
 </p>

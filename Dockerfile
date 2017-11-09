@@ -7,4 +7,3 @@ ADD Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler --pre
 RUN bundle install
 ADD . /myapp
-RUN rake db:migrate
