@@ -1,5 +1,6 @@
 class KatasController < ApplicationController
   before_action :set_kata, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @katas = Kata.all
