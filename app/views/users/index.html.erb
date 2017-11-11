@@ -4,7 +4,7 @@
   <ul>
     <% @users.each do |user| %>
       <p>
-        <%= user.email %> <%= handle_admin(user) %> <%= link_to('Delete', delete_user_path(user.id)) %>
+        <%= user.email %> <%= handle_admin(user) %> <%= link_to('Delete', delete_user_path(user.id), method: :delete) %>
       </p>
     <% end %>
   </ul>
