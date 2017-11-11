@@ -1,0 +1,9 @@
+<center><h1>Users</h1></center>
+
+<p>
+  <ul>
+    <% @users.each do |user| %>
+      <%= user.email %> <%= handle_admin(user) %> <%= link_to('Delete', delete_user_path(user.id)) %>
+    <% end %>
+  </ul>
+</p>

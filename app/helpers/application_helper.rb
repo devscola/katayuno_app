@@ -1,4 +1,6 @@
 module ApplicationHelper
+  NO_LINK = ''
+
   def session_actions
     return log_out_link if user_signed_in?
 
@@ -7,6 +9,12 @@ module ApplicationHelper
 
   def logged_user
     current_user.email if user_signed_in?
+  end
+
+  def admin_users
+    return link_to('Admin Users', users_path) if admin_signed_in?
+
+    NO_LINK
   end
 
   private
@@ -19,5 +27,12 @@ module ApplicationHelper
   def log_in_link
     text = t(:log_in)
     link_to(text, new_user_session_path)
+  end
+
+  def admin_signed_in?
+    return false unless user_signed_in?
+    return false unless current_user.admin?
+
+    true
   end
 end

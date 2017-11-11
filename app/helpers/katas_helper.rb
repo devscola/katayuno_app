@@ -18,13 +18,4 @@ module KatasHelper
 
     NO_LINK
   end
-
-  private
-
-  def admin_signed_in?
-    return false unless user_signed_in?
-    return false unless current_user.admin?
-
-    true
-  end
 end
