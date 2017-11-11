@@ -3,7 +3,9 @@
 <p>
   <ul>
     <% @users.each do |user| %>
-      <%= user.email %> <%= handle_admin(user) %> <%= link_to('Delete', delete_user_path(user.id)) %>
+      <p>
+        <%= user.email %> <%= handle_admin(user) %> <%= link_to('Delete', delete_user_path(user.id)) %>
+      </p>
     <% end %>
   </ul>
 </p>
