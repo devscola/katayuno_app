@@ -44,6 +44,13 @@ describe 'Katas' do
       expect(page).not_to have_content('delete')
     end
 
+    it 'is redirected to root path when add a new kata' do
+
+      visit new_kata_path
+
+      expect(page).not_to have_content('New Kata')
+    end
+
     def log_in_user
       user = create_user
       visit new_user_session_path

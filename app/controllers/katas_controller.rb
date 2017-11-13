@@ -1,6 +1,6 @@
 class KatasController < ApplicationController
   before_action :set_kata, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @katas = Kata.all
@@ -36,6 +36,11 @@ class KatasController < ApplicationController
   end
 
   private
+
+  def authenticate_admin!
+    redirect_to root_path unless user_signed_in?
+    redirect_to root_path unless current_user.admin?
+  end
 
   def set_kata
     @kata = Kata.find(params[:id])
