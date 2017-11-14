@@ -1,0 +1,2 @@
+class Belt < ApplicationRecord
+end

@@ -7,6 +7,7 @@ class KatasController < ApplicationController
   end
 
   def show
+    @belts = Belt.all
   end
 
   def new

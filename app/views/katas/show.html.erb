@@ -1,6 +1,24 @@
-<center><h1><%= @kata.title %></h1></center>
-<p>
-  <center>
-    <%= @kata.description %>
-  </center>
-</p>
+<center>
+  <h1><%= @kata.title %></h1>
+  <p>
+      <%= @kata.description %>
+      <p>
+        <h2><%= t(:belts) %></h2>
+        <% @belts.each do |belt| %>
+          <p>
+            <%= belt.name %> <%= belt.description %>
+          </p>
+        <% end %>
+      </p>
+      <p>
+        <h2><%= t(:add_belt) %></h2>
+        <%= form_tag(belt_path(@kata.id), method: :post) do %>
+          <p><%= label_tag t(:name) %></p>
+          <p><%= text_field_tag :name %></p>
+          <p><%= label_tag t(:description) %></p>
+          <p><%= text_area_tag :description %></p>
+          <p><%= submit_tag t(:add_belt) %></p>
+        <% end %>
+      </p>
+  </p>
+</center>

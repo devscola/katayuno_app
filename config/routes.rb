@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   delete '/user/:id/delete' => 'users#destroy', as: :delete_user
 
   resources :katas
+
+  post '/belt/create/:kata_id' => 'belts#create', as: :belt
 end

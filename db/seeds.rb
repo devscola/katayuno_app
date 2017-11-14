@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(email: 'user@test.com', password: '12345678', password_confirmation: '12345678')
 User.create(email: 'admin@test.com', password: '12345678', password_confirmation: '12345678', admin: true)
+Kata.create(title: 'Kata test', description: 'Kata description test')
