@@ -8,10 +8,12 @@ module UsersHelper
   private
 
   def revoke_admin_link(id)
-    link_to('Revoke Admin', revoke_admin_path(id), method: :patch)
+    text = t(:revoke_admin)
+    link_to(text, revoke_admin_path(id), method: :patch)
   end
 
   def become_admin_link(id)
-    link_to('Become Admin', become_admin_path(id), method: :patch)
+    text = t(:become_admin)
+    link_to(text, become_admin_path(id), method: :patch)
   end
 end

@@ -12,7 +12,8 @@ module ApplicationHelper
   end
 
   def admin_users
-    return link_to('Admin Users', users_path) if admin_signed_in?
+    text = t(:admin_users)
+    return link_to(text, users_path) if admin_signed_in?
 
     NO_LINK
   end

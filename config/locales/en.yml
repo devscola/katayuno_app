@@ -32,3 +32,12 @@
 en:
   log_in: 'Log in'
   log_out: 'Log out'
+  admin_users: 'Admin Users'
+  add_kata: 'Add Kata'
+  edit: 'Edit'
+  delete: 'Delete'
+  revoke_admin: 'Revoke Admin'
+  become_admin: 'Become Admin'
+  title: 'Title'
+  description: 'Description'
+  save: 'Save'

@@ -70,10 +70,10 @@ describe 'Katas' do
       description = 'Description for New Kata'
 
       visit katas_path
-      click_on(:add_kata)
+      click_on('Add Kata')
       fill_in(:kata_title, with: title)
       fill_in(:kata_description, with: description)
-      click_on(:save)
+      click_on('Save')
 
       expect(page).to have_content(title)
       expect(page).to have_content(description)
@@ -89,10 +89,10 @@ describe 'Katas' do
       kata.save
 
       visit katas_path
-      click_on(:edit)
+      click_on('Edit')
       fill_in(:kata_title, with: edited_title)
       fill_in(:kata_description, with: edited_description)
-      click_on(:save)
+      click_on('Save')
 
       expect(page).to have_content(edited_title)
       expect(page).to have_content(edited_description)
@@ -108,7 +108,7 @@ describe 'Katas' do
       kata.save
 
       visit katas_path
-      click_on(:delete)
+      click_on('Delete')
 
       expect(page).not_to have_content(title)
       expect(page).not_to have_content(description)
