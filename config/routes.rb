@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :katas
 
   post '/belt/create/:kata_id' => 'belts#create', as: :belt
+  delete '/belt/:id/delete' => 'belts#destroy', as: :delete_belt
 end

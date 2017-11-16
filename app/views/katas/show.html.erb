@@ -6,7 +6,7 @@
         <h2><%= t(:belts) %></h2>
         <% @belts.each do |belt| %>
           <p>
-            <%= belt.name %> <%= belt.description %>
+            <%= belt.name %> <%= belt.description %> <%= link_to(t(:delete_belt), delete_belt_path(belt.id), method: :delete) %>
           </p>
         <% end %>
       </p>
