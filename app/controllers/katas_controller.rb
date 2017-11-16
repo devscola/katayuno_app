@@ -7,7 +7,8 @@ class KatasController < ApplicationController
   end
 
   def show
-    @belts = Belt.all
+    kata_id = params[:id]
+    @belts = Belt.for(kata_id)
   end
 
   def new
