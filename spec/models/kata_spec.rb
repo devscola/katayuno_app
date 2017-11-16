@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Katas' do
+describe 'Kata' do
   it 'needs a title and description' do
     no_title = ''
     no_description = ''

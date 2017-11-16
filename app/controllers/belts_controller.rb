@@ -2,7 +2,8 @@ class BeltsController < ApplicationController
   def create
     belt = Belt.new(
       name: params[:name],
-      description: params[:description]
+      description: params[:description],
+      kata: params[:kata_id]
     )
     belt.save
 
