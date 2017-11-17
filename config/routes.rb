@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   post '/belt/create/:kata_id' => 'belts#create', as: :belt
   delete '/belt/:id/delete' => 'belts#destroy', as: :delete_belt
+  get '/belt/:id/edit' => 'belts#edit', as: :edit_belt
+  patch '/belt/:id/update' => 'belts#update', as: :update_belt
 end

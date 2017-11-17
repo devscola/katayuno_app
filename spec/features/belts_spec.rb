@@ -32,6 +32,27 @@ describe 'Belts' do
     expect(page).not_to have_content(belt.description)
   end
 
+  it 'can be edited' do
+    new_belt_name = 'New belt name'
+    new_belt_description = 'New belt description'
+    kata = create_kata
+    belt = Belt.new(
+      name: 'Belt for be edited',
+      description: 'Belt for be edited',
+      kata: kata.id
+    )
+    belt.save
+
+    visit kata_path(kata.id)
+    click_on('Edit Belt')
+    fill_in(:name, with: new_belt_name)
+    fill_in(:description, with: new_belt_description)
+    click_on('Save')
+
+    expect(page).to have_content(new_belt_name)
+    expect(page).to have_content(new_belt_description)
+  end
+
   it 'can be deleted' do
     kata = create_kata
     belt = Belt.new(
