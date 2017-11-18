@@ -1,4 +1,6 @@
 class BeltsController < ApplicationController
+  before_action :authenticate_admin!, only: [:create, :edit, :update, :destroy]
+
   def create
     belt = Belt.new(
       name: params[:name],

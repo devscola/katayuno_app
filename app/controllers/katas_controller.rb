@@ -39,11 +39,6 @@ class KatasController < ApplicationController
 
   private
 
-  def authenticate_admin!
-    redirect_to root_path unless user_signed_in?
-    redirect_to root_path unless current_user.admin?
-  end
-
   def set_kata
     @kata = Kata.find(params[:id])
   end

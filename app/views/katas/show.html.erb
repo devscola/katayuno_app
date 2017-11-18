@@ -6,19 +6,21 @@
         <h2><%= t(:belts) %></h2>
         <% @belts.each do |belt| %>
           <p>
-            <%= belt.name %> <%= belt.description %> <%= link_to(t(:delete_belt), delete_belt_path(belt.id), method: :delete) %> <%= link_to(t(:edit_belt), edit_belt_path(belt.id)) %>
+            <%= belt.name %> <%= belt.description %> <%= edit_belt_button(belt.id) %> <%= delete_belt_button(belt.id) %>
           </p>
         <% end %>
       </p>
-      <p>
-        <h2><%= t(:add_belt) %></h2>
-        <%= form_tag(belt_path(@kata.id), method: :post) do %>
-          <p><%= label_tag t(:name) %></p>
-          <p><%= text_field_tag :name %></p>
-          <p><%= label_tag t(:description) %></p>
-          <p><%= text_area_tag :description %></p>
-          <p><%= submit_tag t(:add_belt) %></p>
-        <% end %>
-      </p>
+      <% if admin_signed_in? %>
+        <p>
+          <%= content_tag(:h2) { t(:add_belt) } %>
+          <%= form_tag(belt_path(@kata.id), method: :post) do %>
+            <p><%= label_tag t(:name) %></p>
+            <p><%= text_field_tag :name %></p>
+            <p><%= label_tag t(:description) %></p>
+            <p><%= text_area_tag :description %></p>
+            <p><%= submit_tag t(:add_belt) %></p>
+          <% end %>
+        </p>
+      <% end %>
   </p>
 </center>

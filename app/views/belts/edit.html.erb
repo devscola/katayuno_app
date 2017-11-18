@@ -1,11 +1,12 @@
 <center>
+  <h2><%= t(:edit_belt) %></h2>
   <p>
     <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
-      <%= label_tag t(:name) %>
-      <%= text_field_tag :name %>
-      <%= label_tag t(:description) %>
-      <%= text_area_tag :description %>
-      <%= submit_tag t(:save) %>
+      <p><%= label_tag t(:name) %></p>
+      <p><%= text_field_tag :name %></p>
+      <p><%= label_tag t(:description) %></p>
+      <p><%= text_area_tag :description %></p>
+      <p><%= submit_tag t(:save) %></p>
     <% end %>
   </p>
 </center>
