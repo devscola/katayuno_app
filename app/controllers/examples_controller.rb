@@ -15,4 +15,12 @@ class ExamplesController < ApplicationController
 
     redirect_to examples_path(kata.id)
   end
+
+  def destroy
+    example = Example.find(params[:id])
+    kata = example.kata
+    example.destroy
+
+    redirect_to examples_path(kata)
+  end
 end

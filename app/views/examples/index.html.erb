@@ -3,7 +3,7 @@
   <p>
     <ul>
       <% @examples.each do |example| %>
-        <li><%= link_to(example.text, example.url, target: "_blank") %></li>
+        <li><%= link_to(example.text, example.url, target: "_blank") %> <%= link_to(t(:delete_example), delete_example_path(example.id), method: :delete) %></li>
       <% end %>
     </ul>
   </p>
