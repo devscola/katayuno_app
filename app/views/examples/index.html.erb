@@ -1,0 +1,19 @@
+<center>
+  <h1><%= "#{@kata.title}'s #{t(:examples)}" %></h1>
+  <p>
+    <ul>
+      <% @examples.each do |example| %>
+        <li><%= link_to(example.text, example.url, target: "_blank") %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <%= form_tag(example_path(@kata.id), method: :post) do %>
+      <%= label_tag t(:text) %>
+      <%= text_field_tag :text %>
+      <%= label_tag t(:url) %>
+      <%= text_field_tag :url %>
+      <%= submit_tag t(:add_example) %>
+    <% end %>
+  </p>
+</center>

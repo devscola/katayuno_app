@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   delete '/belt/:id/delete' => 'belts#destroy', as: :delete_belt
   get '/belt/:id/edit' => 'belts#edit', as: :edit_belt
   patch '/belt/:id/update' => 'belts#update', as: :update_belt
+
+  get '/examples/:kata_id' => 'examples#index', as: :examples
+  post '/examples/create/:kata_id' => 'examples#create', as: :example
 end

@@ -16,3 +16,7 @@ en:
   belts: 'Belts'
   delete_belt: 'Delete belt'
   edit_belt: 'Edit Belt'
+  examples: 'Examples'
+  add_example: 'Add Example'
+  url: 'URL'
+  text: 'Text'

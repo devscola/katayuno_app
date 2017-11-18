@@ -30,3 +30,12 @@ def create_user
   user.save
   user
 end
+
+def create_kata(title='Kata title', description='Kata description')
+  kata = Kata.new(
+    title: title,
+    description: description
+  )
+  kata.save
+  kata
+end

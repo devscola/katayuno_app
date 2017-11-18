@@ -106,13 +106,4 @@ describe 'Belts' do
       expect(page).not_to have_content('Edit Belt')
     end
   end
-
-  def create_kata(title='Kata title', description='Kata description')
-    kata = Kata.new(
-      title: title,
-      description: description
-    )
-    kata.save
-    kata
-  end
 end

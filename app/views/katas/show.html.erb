@@ -2,6 +2,7 @@
   <h1><%= @kata.title %></h1>
   <p>
       <%= @kata.description %>
+      <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
       <p>
         <h2><%= t(:belts) %></h2>
         <% @belts.each do |belt| %>
