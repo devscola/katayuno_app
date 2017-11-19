@@ -16,6 +16,19 @@ class ExamplesController < ApplicationController
     redirect_to examples_path(kata.id)
   end
 
+  def edit
+    @example = Example.find(params[:id])
+  end
+
+  def update
+    example = Example.find(params[:id])
+    example.text = params[:example][:text]
+    example.url = params[:example][:url]
+    example.save
+
+    redirect_to examples_path(example.kata)
+  end
+
   def destroy
     example = Example.find(params[:id])
     kata = example.kata

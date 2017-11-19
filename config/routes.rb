@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get '/examples/:kata_id' => 'examples#index', as: :examples
   post '/examples/create/:kata_id' => 'examples#create', as: :example
   delete '/examples/delete/:id' => 'examples#destroy', as: :delete_example
+  get '/examples/edit/:id' => 'examples#edit', as: :edit_example
+  patch '/examples/update/:id' => 'examples#update', as: :update_example
 end
