@@ -24,8 +24,8 @@ describe 'Example' do
 
     example.save
 
-    expect(example.errors.size).to eq(2)
+    expect(example.errors.size).to eq(3)
     expect(example.errors[:text]).to eq(["can't be blank"])
-    expect(example.errors[:url]).to eq(["can't be blank"])
+    expect(example.errors[:url]).to eq(["can't be blank", "is invalid"])
   end
 end
