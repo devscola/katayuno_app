@@ -16,48 +16,56 @@ describe 'Examples' do
     expect(page).to have_content(example_text)
   end
 
-  it 'can be deleted' do
-    example_text = 'Example text'
-    example = create_example(example_text)
+  context 'when admin is logged' do
+    before(:each) do
+      log_in_admin
+    end
 
-    visit examples_path(example.kata)
-    click_on('Delete Example')
+    it 'can be deleted' do
+      example_text = 'Example text'
+      example = create_example(example_text)
 
-    expect(page).not_to have_content(example_text)
-  end
+      visit examples_path(example.kata)
+      click_on('Delete Example')
 
-  it 'can be edited' do
-    example = create_example
-    edited_text = 'Edited example'
+      expect(page).not_to have_content(example_text)
+    end
 
-    visit examples_path(example.kata)
-    click_on('Edit Example')
-    fill_in('example_text', with: edited_text)
-    fill_in('example_url', with: 'http://edited-example.url')
-    click_on('Edit Example')
+    it 'can be edited' do
+      example = create_example
+      edited_text = 'Edited example'
 
-    expect(page).to have_content(edited_text)
+      visit examples_path(example.kata)
+      click_on('Edit Example')
+      fill_in('example_text', with: edited_text)
+      fill_in('example_url', with: 'http://edited-example.url')
+      click_on('Edit Example')
+
+      expect(page).to have_content(edited_text)
+    end
   end
 
   it 'can be handled only by its owner' do
-    another_user_example_text = 'Another User example text'
-    create_another_user_example_with(another_user_example_text)
-    user_example_text = 'User example text'
     user = log_in_user
     kata = create_kata
     example = Example.new(
-      text: user_example_text,
+      text: 'User example text',
       url: 'http://example.url',
       kata: kata.id,
       user: user.id
     )
     example.save
+    example = Example.new(
+      text: 'Another user example',
+      url: 'http://example.url',
+      kata: kata.id
+    )
+    example.save
 
-    visit root_path
-    click_on('My Examples')
+    visit examples_path(kata.id)
 
-    expect(page).not_to have_content(another_user_example_text)
-    expect(page).to have_content(user_example_text)
+    expect(page).to have_content('Edit Example', count: 1)
+    expect(page).to have_content('Delete Example', count: 1)
   end
 
   def create_example(text='Example text', url='http://example.url', kata_id=nil)
@@ -92,9 +100,9 @@ describe 'Examples' do
     example
   end
 
-  def create_another_user_example_with(text)
+  def create_another_user_example_with(text, kata_id)
     another_user = User.new(email: 'another_user@test.com', password: '12345678', password_confirmation: '12345678')
     another_user.save
-    create_example_with_user(text, '', nil, another_user.id)
+    create_example_with_user(text, '', kata_id, another_user.id)
   end
 end
