@@ -1,10 +1,11 @@
 
-def log_in_user
+def log_in_user(email='user@test.com', password='12345678')
   user = create_user
   visit new_user_session_path
   fill_in(:user_email, with: user.email)
   fill_in(:user_password, with: user.password)
   find('input[name="commit"]').click
+  user
 end
 
 def log_in_admin
@@ -19,13 +20,14 @@ def log_in_admin
   fill_in(:user_email, with: user.email)
   fill_in(:user_password, with: user.password)
   find('input[name="commit"]').click
+  user
 end
 
-def create_user
+def create_user(email='user@test.com', password='12345678')
   user = User.new(
-    email: 'user@test.com',
-    password: '12345678',
-    password_confirmation: '12345678'
+    email: email,
+    password: password,
+    password_confirmation: password
   )
   user.save
   user

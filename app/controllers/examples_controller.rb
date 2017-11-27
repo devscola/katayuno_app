@@ -1,4 +1,6 @@
 class ExamplesController < ApplicationController
+  before_action :authenticate_user!, only: [:for_user]
+
   def index
     @kata = Kata.find(params[:kata_id])
     @examples = Example.for(@kata.id)
@@ -6,12 +8,24 @@ class ExamplesController < ApplicationController
 
   def create
     kata = Kata.find(params[:kata_id])
-    example = Example.new(
-      text: params[:text],
-      url: params[:url],
-      kata: kata.id
-    )
-    example.save
+
+    if current_user
+      user_id = current_user.id
+      example = Example.new(
+        text: params[:text],
+        url: params[:url],
+        kata: kata.id,
+        user: user_id
+      )
+      example.save
+    else
+      example = Example.new(
+        text: params[:text],
+        url: params[:url],
+        kata: kata.id
+      )
+      example.save
+    end
 
     redirect_to examples_path(kata.id)
   end
@@ -35,5 +49,10 @@ class ExamplesController < ApplicationController
     example.destroy
 
     redirect_to examples_path(kata)
+  end
+
+  def for_user
+    user = User.find(params[:id])
+    @examples = Example.belongs(user.id)
   end
 end

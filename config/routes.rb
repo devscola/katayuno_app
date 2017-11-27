@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   delete '/examples/delete/:id' => 'examples#destroy', as: :delete_example
   get '/examples/edit/:id' => 'examples#edit', as: :edit_example
   patch '/examples/update/:id' => 'examples#update', as: :update_example
+  get '/examples/user/:id' => 'examples#for_user', as: :user_examples
 end

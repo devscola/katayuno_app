@@ -7,4 +7,8 @@ class Example < ApplicationRecord
   def self.for(kata)
     where(kata: kata)
   end
+
+  def self.belongs(user_id)
+    where(user: user_id)
+  end
 end
