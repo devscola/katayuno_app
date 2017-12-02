@@ -18,13 +18,6 @@ module ApplicationHelper
     NO_LINK
   end
 
-  def my_examples
-    text = t(:my_examples)
-    return link_to(text, user_examples_path(current_user.id)) if current_user
-
-    NO_LINK
-  end
-
   private
 
   def log_out_link

@@ -50,9 +50,4 @@ class ExamplesController < ApplicationController
 
     redirect_to examples_path(kata)
   end
-
-  def for_user
-    user = User.find(params[:id])
-    @examples = Example.belongs(user.id)
-  end
 end
