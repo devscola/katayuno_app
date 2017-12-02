@@ -13,7 +13,7 @@ module ApplicationHelper
 
   def admin_users
     text = t(:admin_users)
-    return link_to(text, users_path) if admin_signed_in?
+    return link_to(text, users_path, { class: "nav-link" }) if admin_signed_in?
 
     NO_LINK
   end
@@ -22,12 +22,12 @@ module ApplicationHelper
 
   def log_out_link
     text = t(:log_out)
-    link_to(text, destroy_user_session_path, method: :delete)
+    link_to(text, destroy_user_session_path, { method: :delete, class: "nav-link" })
   end
 
   def log_in_link
     text = t(:log_in)
-    link_to(text, new_user_session_path)
+    link_to(text, new_user_session_path, { class: "nav-link" })
   end
 
   def admin_signed_in?

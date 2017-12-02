@@ -1,13 +1,51 @@
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2>Katayuno</h2>
+        <p class="lead">
+          Katayuno (Katas + Desayuno) is a weekly open event where to pair code katas to learn TDD while enjoying a freshly baked breakfast.
 
-<p>
-  <ul>
-    <% @katas.each do |kata| %>
-      <li>
-        <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
-      </li>
-    <% end %>
-  </lu>
-</p>
-<p>
-  <%= add_kata_button %>
-</p>
+          <p>If you’d like to know more about Katayuno, check out <a href="https://medium.com/@FlywireEng/katayuno-c2c19c65e66a">this</a> article.</p>
+        </p>
+        <h3>The kata</h3>
+        <p class="lead">
+          A code kata is a small exercise in programming that is meant to help us programmers sharpen our skills through practice.
+        </p>
+        <h3>The TDD</h3>
+        <p class="lead">
+          TDD is a software development process that uses tests to make the design emerge by following the red/green/refactor cycle.
+        </p>
+        <h3>The pairing</h3>
+        <p class="lead">
+          Pair programming is an agile software development technique in which two programmers work together at one workstation.
+        </p>
+        <h3>The Language</h3>
+        <p class="lead">
+          You can make katas in every languages, the important point is to learn tdd, good practices and pairing.
+        </p>
+        <h3>The meetup</h3>
+        <p class="lead">
+          The <a href="https://www.meetup.com/es-ES/Aprende-a-programar-en-Valencia/events/242889981/">meetup</a> is hosted by <a href="https://www.flywire.com/">Flywire</a> and organized by <a href="http://www.devscola.org">Devscola</a>.
+        </p>
+        <h2>Kata-logue</h2>
+        <p class="lead">
+          Find below all the katas and relative solution examples.
+          <p>
+            <ul>
+              <% @katas.each do |kata| %>
+                <li>
+                  <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
+                </li>
+              <% end %>
+            </lu>
+          </p>
+          <p>
+            <%= add_kata_button %>
+          </p>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
