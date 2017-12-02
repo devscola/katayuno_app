@@ -4,6 +4,8 @@
     <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
       <p><%= label_tag t(:name) %></p>
       <p><%= text_field_tag :name %></p>
+      <p><%= label_tag t(:belt) %></p>
+      <p><%= text_field_tag :belt %></p>
       <p><%= label_tag t(:description) %></p>
       <p><%= text_area_tag :description %></p>
       <p><%= submit_tag t(:save) %></p>
