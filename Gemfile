@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'pg', '~> 0.21.0'
 gem 'devise', '~> 4.3.0'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails', '~> 4.3.1'
 
 group :test do
   gem 'rspec-rails', '~> 3.7.1'
