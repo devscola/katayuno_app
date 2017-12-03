@@ -1,5 +1,4 @@
 class ExamplesController < ApplicationController
-  before_action :authenticate_user!, only: [:for_user]
 
   def index
     @kata = Kata.find(params[:kata_id])

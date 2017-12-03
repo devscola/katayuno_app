@@ -20,9 +20,5 @@ Rails.application.routes.draw do
   get '/examples/edit/:id' => 'examples#edit', as: :edit_example
   patch '/examples/update/:id' => 'examples#update', as: :update_example
 
-  get '/external_kata/new' => 'external_katas#new', as: :new_external_kata
-  post '/external_kata/create' => 'external_katas#create', as: :create_external_kata
-  delete '/external_kata/delete/:id' => 'external_katas#destroy', as: :delete_external_belt
-  get '/external_kata/edit/:id' => 'external_katas#edit', as: :edit_external_kata
-  patch '/external_kata/update/:id' => 'external_katas#update', as: :external_kata
+  resources :external_katas
 end

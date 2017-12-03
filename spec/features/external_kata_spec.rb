@@ -68,9 +68,9 @@ describe 'External Katas' do
 
       visit root_path
       click_on('Add external Kata')
-      fill_in(:name, with: external_kata_name)
-      fill_in(:url, with: external_kata_url)
-      click_on('Add external Kata')
+      fill_in('external_kata_name', with: external_kata_name)
+      fill_in('external_kata_url', with: external_kata_url)
+      click_on('Save')
 
       expect(page).to have_link(external_kata_name, href: external_kata_url)
     end
@@ -93,7 +93,7 @@ describe 'External Katas' do
       click_on('Edit')
       fill_in('external_kata_name', with: edited_external_kata_name)
       fill_in('external_kata_url', with: edited_external_kata_url)
-      click_on('Edit')
+      click_on('Save')
 
       expect(page).to have_link(edited_external_kata_name, href: edited_external_kata_url)
     end

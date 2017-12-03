@@ -1,0 +1,9 @@
+<p>
+  <%= form_for(@external_kata) do |f| %>
+    <p><%= f.label t(:name) %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label t(:url) %></p>
+    <p><%= f.text_field :url %></p>
+    <p><%= f.submit t(:save) %></p>
+  <% end %>
+</p>

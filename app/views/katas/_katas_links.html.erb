@@ -1,0 +1,5 @@
+<% @katas.each do |kata| %>
+  <li>
+    <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
+  </li>
+<% end %>

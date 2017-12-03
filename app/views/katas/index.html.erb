@@ -33,16 +33,8 @@
           Find below all the katas and relative solution examples.
           <p>
             <ul>
-              <% @katas.each do |kata| %>
-                <li>
-                  <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
-                </li>
-              <% end %>
-              <% @external_katas.each do |external_kata| %>
-                <li>
-                  <%= link_to external_kata.name, external_kata.url, { target: '_blank' } %> <%= edit_external_kata_button(external_kata.id) %> <%= delete_external_kata_button(external_kata.id) %>
-                </li>
-              <% end %>
+              <%= render 'katas_links', note: @katas %>
+              <%= render 'external_katas_links', note: @external_katas %>
             </lu>
           </p>
           <p>
