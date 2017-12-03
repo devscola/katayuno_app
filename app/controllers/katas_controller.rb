@@ -4,6 +4,7 @@ class KatasController < ApplicationController
 
   def index
     @katas = Kata.all
+    @external_katas = ExternalKata.all
   end
 
   def show

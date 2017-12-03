@@ -38,10 +38,16 @@
                   <%= link_to kata.title, kata_path(kata.id) %> <%= edit_kata_button(kata.id) %> <%= delete_kata_button(kata.id) %>
                 </li>
               <% end %>
+              <% @external_katas.each do |external_kata| %>
+                <li>
+                  <%= link_to external_kata.name, external_kata.url, { target: '_blank' } %>
+                </li>
+              <% end %>
             </lu>
           </p>
           <p>
             <%= add_kata_button %>
+            <%= add_external_kata_button %>
           </p>
         </p>
       </div>
