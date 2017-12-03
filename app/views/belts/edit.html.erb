@@ -1,14 +1,20 @@
-<center>
-  <h2><%= t(:edit_belt) %></h2>
-  <p>
-    <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
-      <p><%= label_tag t(:name) %></p>
-      <p><%= text_field_tag :name %></p>
-      <p><%= label_tag t(:belt) %></p>
-      <p><%= text_field_tag :belt %></p>
-      <p><%= label_tag t(:description) %></p>
-      <p><%= text_area_tag :description %></p>
-      <p><%= submit_tag t(:save) %></p>
-    <% end %>
-  </p>
-</center>
+<section id="belts">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1 class="mt-5"><%= t(:edit_belt) %></h1>
+        <p>
+          <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
+            <p><%= label_tag t(:name) %></p>
+            <p><%= text_field_tag :name %></p>
+            <p><%= label_tag t(:image) %></p>
+            <p><%= text_field_tag :image %></p>
+            <p><%= label_tag t(:description) %></p>
+            <p><%= text_area_tag :description %></p>
+            <p><%= submit_tag t(:save) %></p>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

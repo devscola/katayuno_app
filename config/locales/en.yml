@@ -27,3 +27,5 @@ en:
   add_external_kata: 'Add external Kata'
   add_kata_url: 'Add kata from URL'
   save: 'Save'
+  new_kata: 'New Kata'
+  image: 'Image url'

@@ -1,29 +1,23 @@
-<center>
-  <h1><%= @kata.title %></h1>
-  <p>
-      <%= @kata.description %>
-      <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
-      <p>
-        <h2><%= t(:belts) %></h2>
-        <% @belts.each do |belt| %>
-          <p>
-            <%= image_tag(belt.image, { :size => '300x225' }) %> <%= belt.name %> <%= belt.description %> <%= edit_belt_button(belt.id) %> <%= delete_belt_button(belt.id) %>
-          </p>
-        <% end %>
-      </p>
-      <% if admin_signed_in? %>
+<section id="kata">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1 class="mt-5"><%= @kata.title %></h1>
         <p>
-          <%= content_tag(:h2) { t(:add_belt) } %>
-          <%= form_tag(belt_path(@kata.id), method: :post) do %>
-            <p><%= label_tag t(:name) %></p>
-            <p><%= text_field_tag :name %></p>
-            <p><%= label_tag t(:belt) %></p>
-            <p><%= text_field_tag :belt %></p>
-            <p><%= label_tag t(:description) %></p>
-            <p><%= text_area_tag :description %></p>
-            <p><%= submit_tag t(:add_belt) %></p>
-          <% end %>
+          <p><%= @kata.description %></p>
+          <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
+          <p>
+            <h2><%= t(:belts) %></h2>
+            <% @belts.each do |belt| %>
+              <p>
+                <%= image_tag(belt.image, { :size => '300x225' }) %> <%= belt.name %> <%= belt.description %> <%= edit_belt_button(belt.id) %> <%= delete_belt_button(belt.id) %>
+              </p>
+            <% end %>
+          </p>
+          <%= render 'new_belt', note: @belt %>
         </p>
-      <% end %>
-  </p>
-</center>
+      </div>
+    </div>
+  </div>
+</section>
+

@@ -1,6 +1,12 @@
-<center>
-  <h1>New Kata</h1>
-  <p>
-    <%= render 'form', note: @kata %>
-  </p>
-</center>
+<section id="kata">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h1 class="mt-5"><%= t(:new_kata) %></h1>
+
+        <%= render 'form', note: @kata %>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

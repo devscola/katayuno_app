@@ -7,7 +7,9 @@ class Belt < ApplicationRecord
   validates :image, format: {with: /\.(png|jpg)\Z/i}, allow_blank: true
 
   def default_image
-    self.image ||= 'default_belt.jpg'
+    if self.image.nil? || self.image.empty?
+      self.image = 'default_belt.jpg'
+    end
   end
 
   def self.for(kata)

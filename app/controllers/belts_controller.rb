@@ -5,6 +5,7 @@ class BeltsController < ApplicationController
     belt = Belt.new(
       name: params[:name],
       description: params[:description],
+      image: params[:image],
       kata: params[:kata_id]
     )
     belt.save
@@ -20,6 +21,7 @@ class BeltsController < ApplicationController
     belt = Belt.find(params[:id])
     belt.name = params[:name]
     belt.description = params[:description]
+    belt.image = params[:image]
     belt.save
 
     redirect_to kata_path(belt.kata)

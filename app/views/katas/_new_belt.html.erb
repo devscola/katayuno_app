@@ -1,0 +1,14 @@
+<% if admin_signed_in? %>
+  <p>
+    <%= content_tag(:h2) { t(:add_belt) } %>
+    <%= form_tag(belt_path(@kata.id), method: :post) do %>
+      <p><%= label_tag t(:name) %></p>
+      <p><%= text_field_tag :name %></p>
+      <p><%= label_tag t(:image) %></p>
+      <p><%= text_field_tag :image %></p>
+      <p><%= label_tag t(:description) %></p>
+      <p><%= text_area_tag :description %></p>
+      <p><%= submit_tag t(:add_belt) %></p>
+    <% end %>
+  </p>
+<% end %>

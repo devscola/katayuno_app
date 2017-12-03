@@ -1,9 +1,15 @@
-<center>
-  <%= form_for(@example, url: update_example_path(@example.id)) do |f| %>
-    <p><%= f.label t(:text) %></p>
-    <p><%= f.text_field :text %></p>
-    <p><%= f.label t(:url) %></p>
-    <p><%= f.text_field :url %></p>
-    <p><%= f.submit t(:edit_example) %></p>
-  <% end %>
-</center>
+<section id="examples">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <%= form_for(@example, url: update_example_path(@example.id)) do |f| %>
+          <p><%= f.label t(:text) %></p>
+          <p><%= f.text_field :text %></p>
+          <p><%= f.label t(:url) %></p>
+          <p><%= f.text_field :url %></p>
+          <p><%= f.submit t(:edit_example) %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
