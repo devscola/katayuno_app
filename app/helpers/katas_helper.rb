@@ -1,6 +1,13 @@
 module KatasHelper
   NO_LINK = ''
 
+  def edit_external_kata_button(id)
+    text = t(:edit)
+    return link_to(text, edit_external_kata_path(id), {class: "btn btn-primary"}) if admin_signed_in?
+
+    NO_LINK
+  end
+
   def add_external_kata_button
     text = t(:add_external_kata)
     return link_to(text, new_external_kata_path, {class: "btn btn-primary"}) if admin_signed_in?

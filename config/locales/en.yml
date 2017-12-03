@@ -25,3 +25,4 @@ en:
   my_examples: 'My Examples'
   home: 'Home'
   add_external_kata: 'Add external Kata'
+  add_kata_url: 'Add kata from URL'

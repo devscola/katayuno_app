@@ -1,0 +1,10 @@
+<h2><%= ("#{t(:edit)} #{@external_kata.name}") %></h2>
+<p>
+  <%= form_for(@external_kata) do |f| %>
+    <p><%= f.label t(:name) %></p>
+    <p><%= f.text_field :name %></p>
+    <p><%= f.label t(:url) %></p>
+    <p><%= f.text_field :url %></p>
+    <p><%= f.submit t(:edit) %></p>
+  <% end %>
+</p>

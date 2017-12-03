@@ -1,7 +1,11 @@
-<%= form_tag(create_external_kata_path) do %>
-  <p><%= label_tag t(:name) %></p>
-  <p><%= text_field_tag :name %></p>
-  <p><%= label_tag t(:url) %></p>
-  <p><%= text_field_tag :url %></p>
-  <p><%= submit_tag t(:add_external_kata) %></p>
-<% end %>
+<h2><%= t(:add_kata_url) %></h2>
+
+<p>
+  <%= form_tag(create_external_kata_path) do %>
+    <p><%= label_tag t(:name) %></p>
+    <p><%= text_field_tag :name %></p>
+    <p><%= label_tag t(:url) %></p>
+    <p><%= text_field_tag :url %></p>
+    <p><%= submit_tag t(:add_external_kata) %></p>
+  <% end %>
+</p>

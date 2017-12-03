@@ -12,11 +12,19 @@ describe 'External Katas' do
     end
 
     it 'can not be deleted' do
-      external_kata = create_external_kata
+      create_external_kata
 
       visit root_path
 
       expect(page).not_to have_content('Delete')
+    end
+
+    it 'can not be edited' do
+      create_external_kata
+
+      visit root_path
+
+      expect(page).not_to have_content('Edit')
     end
   end
 
@@ -38,6 +46,14 @@ describe 'External Katas' do
       visit root_path
 
       expect(page).not_to have_content('Delete')
+    end
+
+    it 'can not be edited' do
+      create_external_kata
+
+      visit root_path
+
+      expect(page).not_to have_content('Edit')
     end
   end
 
@@ -66,6 +82,20 @@ describe 'External Katas' do
       click_on('Delete')
 
       expect(page).not_to have_content(external_kata.name)
+    end
+
+    it 'can be edited' do
+      create_external_kata
+      edited_external_kata_name = 'Edited external kata'
+      edited_external_kata_url = 'http://edited-external-kata.com'
+
+      visit root_path
+      click_on('Edit')
+      fill_in('external_kata_name', with: edited_external_kata_name)
+      fill_in('external_kata_url', with: edited_external_kata_url)
+      click_on('Edit')
+
+      expect(page).to have_link(edited_external_kata_name, href: edited_external_kata_url)
     end
   end
 
