@@ -22,4 +22,5 @@ Rails.application.routes.draw do
 
   get '/external_kata/new' => 'external_katas#new', as: :new_external_kata
   post '/external_kata/create' => 'external_katas#create', as: :create_external_kata
+  delete '/external_kata/delete/:id' => 'external_katas#destroy', as: :delete_external_belt
 end

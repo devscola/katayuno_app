@@ -8,6 +8,13 @@ module KatasHelper
     NO_LINK
   end
 
+  def delete_external_kata_button(id)
+    text = t(:delete)
+    return link_to(text, delete_external_belt_path(id), { method: :delete, class: "btn btn-danger"}) if admin_signed_in?
+
+    NO_LINK
+  end
+
   def delete_belt_button(id)
     text = t(:delete_belt)
     return link_to(text, delete_belt_path(id), { method: :delete, class: "btn btn-danger"}) if admin_signed_in?

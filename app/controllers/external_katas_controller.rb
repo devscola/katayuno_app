@@ -1,5 +1,5 @@
 class ExternalKatasController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create]
+  before_action :authenticate_admin!, only: [:new, :create, :destroy]
 
   def new
   end
@@ -10,6 +10,13 @@ class ExternalKatasController < ApplicationController
       url: params[:url]
     )
     external_kata.save
+
+    redirect_to root_path
+  end
+
+  def destroy
+    external_kata = ExternalKata.find(params[:id])
+    external_kata.destroy
 
     redirect_to root_path
   end

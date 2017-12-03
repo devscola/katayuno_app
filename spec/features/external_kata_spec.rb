@@ -3,32 +3,78 @@ require 'rails_helper'
 require 'capybara'
 
 describe 'External Katas' do
-  it 'can not be added by a non user' do
+  context 'for a non user' do
+    it 'can not be added' do
 
-    visit root_path
+      visit root_path
 
-    expect(page).not_to have_content('Add external Kata')
+      expect(page).not_to have_content('Add external Kata')
+    end
+
+    it 'can not be deleted' do
+      external_kata = create_external_kata
+
+      visit root_path
+
+      expect(page).not_to have_content('Delete')
+    end
   end
 
-  it 'can not be added by a normal user' do
-    log_in_user
+  context 'for a normal user' do
+    before(:each) do
+      log_in_user
+    end
 
-    visit root_path
+    it 'can not be added' do
 
-    expect(page).not_to have_content('Add external Kata')
+      visit root_path
+
+      expect(page).not_to have_content('Add external Kata')
+    end
+
+    it 'can not be deleted' do
+      external_kata = create_external_kata
+
+      visit root_path
+
+      expect(page).not_to have_content('Delete')
+    end
   end
 
-  it 'can be added by an admin' do
-    external_kata_name = 'External Kata name'
-    external_kata_url = 'http://external-kata.com'
-    log_in_admin
+  context 'for an admin' do
+    before(:each) do
+      log_in_admin
+    end
 
-    visit root_path
-    click_on('Add external Kata')
-    fill_in(:name, with: external_kata_name)
-    fill_in(:url, with: external_kata_url)
-    click_on('Add external Kata')
+    it 'can be added' do
+      external_kata_name = 'External Kata name'
+      external_kata_url = 'http://external-kata.com'
 
-    expect(page).to have_link(external_kata_name, href: external_kata_url)
+      visit root_path
+      click_on('Add external Kata')
+      fill_in(:name, with: external_kata_name)
+      fill_in(:url, with: external_kata_url)
+      click_on('Add external Kata')
+
+      expect(page).to have_link(external_kata_name, href: external_kata_url)
+    end
+
+    it 'can be deleted' do
+      external_kata = create_external_kata
+
+      visit root_path
+      click_on('Delete')
+
+      expect(page).not_to have_content(external_kata.name)
+    end
+  end
+
+  def create_external_kata(name='External kata', url='http://external-kata.com')
+    kata = ExternalKata.new(
+      name: name,
+      url: url
+    )
+    kata.save
+    kata
   end
 end
