@@ -1,24 +1,47 @@
-# README
+# Katayuno App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is done for handle code katas and people examples for the event of Devscola's Katayuno.
 
-Things you may want to cover:
+Too it is an example for the Rails nini-run of Devscola at December 2017.
 
-* Ruby version
+## Instalation requirements
+### With docker
 
-* System dependencies
+- Docker version 17.03.0-ce (or higher)
+- docker-compose version 1.11.2 (or higher)
 
-* Configuration
+### Without docker
 
-* Database creation
+- ruby 2.4.0p0 (or higher)
+- System libraries build-essential, libpq-dev, nodejs
 
-* Database initialization
+## Installation
+### Without docker
 
-* How to run the test suite
+Run the follow commands:
+- `gem install bundle`
+- `bundle install`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Run the tests
+### With docker
 
-* Deployment instructions
+Run the follow command:
+- `docker-compose run web rake`
 
-* ...
+### Without docker
+
+Run the follow command:
+
+- `bundle exec rspec`
+
+## Run the application
+### With docker
+
+Run the follow command:
+- `docker-compose up --build`
+
+### Withour docker
+
+Run the follow command:
+- `bundle exec rake db:migrate`
+- `rails s`

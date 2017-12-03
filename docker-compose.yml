@@ -2,6 +2,8 @@ version: '3'
 services:
   web:
     build: .
+    command: bundle exec rake db:migrate
+    command: bundle exec rake db:seed
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/myapp
