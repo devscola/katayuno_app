@@ -82,24 +82,6 @@ describe 'Examples' do
     example
   end
 
-  def create_example_with_user(text='Example text', url='http://example.url', kata_id=nil, user_id=nil)
-    if kata_id.nil?
-      kata = create_kata
-      kata_id = kata.id
-    end
-    if user_id.nil?
-      user = create_user
-      user_id = user.id
-    end
-    example = Example.new(
-      text: text,
-      url: url,
-      kata: kata_id
-    )
-    example.save
-    example
-  end
-
   def create_another_user_example_with(text, kata_id)
     another_user = User.new(email: 'another_user@test.com', password: '12345678', password_confirmation: '12345678')
     another_user.save

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete '/examples/delete/:id' => 'examples#destroy', as: :delete_example
   get '/examples/edit/:id' => 'examples#edit', as: :edit_example
   patch '/examples/update/:id' => 'examples#update', as: :update_example
+  get '/examples/for_externals/:external_id' => 'examples#for_externals', as: :external_examples
 
   resources :external_katas
 end

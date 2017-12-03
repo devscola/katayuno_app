@@ -41,3 +41,22 @@ def create_kata(title='Kata title', description='Kata description')
   kata.save
   kata
 end
+
+def create_example_with_user(text='Example text', url='http://example.url', kata_id=nil, user_id=nil)
+  if kata_id.nil?
+    kata = create_kata
+    kata_id = kata.id
+  end
+  if user_id.nil?
+    user = create_user
+    user_id = user.id
+  end
+  example = Example.new(
+    text: text,
+    url: url,
+    kata: kata_id,
+    user: user_id
+  )
+  example.save
+  example
+end

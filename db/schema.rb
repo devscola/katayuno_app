@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201170740) do
+ActiveRecord::Schema.define(version: 20171203212332) do
 
   create_table "belts", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20171201170740) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "external"
+    t.string "external_id"
   end
 
   create_table "katas", force: :cascade do |t|
