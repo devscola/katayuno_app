@@ -4,25 +4,6 @@ require 'rails_helper'
 require 'capybara'
 
 describe 'External Katas' do
-  it 'can have examples' do
-    create_external_kata
-
-    visit root_path
-
-    expect(page).to have_content('Examples')
-  end
-
-  it 'dont show examples from a kata', :bug do
-    kata = create_kata
-    example = create_example_with_user('Example text', 'http://example.url', kata.id, nil)
-    external_kata = create_external_kata
-
-    visit root_path
-    click_on('Examples')
-
-    expect(page).not_to have_content(example.text)
-  end
-
   context 'for a non user' do
     it 'can not be added' do
 

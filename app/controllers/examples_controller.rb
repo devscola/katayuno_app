@@ -5,11 +5,6 @@ class ExamplesController < ApplicationController
     @examples = Example.for(@kata.id)
   end
 
-  def for_externals
-    @kata = ExternalKata.find_by(external_id: params[:external_id])
-    @examples = Example.for(@kata.external_id)
-  end
-
   def create
     kata = Kata.find(params[:kata_id])
 
