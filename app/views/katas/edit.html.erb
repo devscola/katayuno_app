@@ -6,6 +6,9 @@
         <p>
           <%= render 'form', note: @kata %>
         </p>
+        <p>
+          <%= link_to(t(:back), kata_path(@kata.id)) %>
+        </p>
       </div>
     </div>
   </div>

@@ -17,6 +17,9 @@
             <%= submit_tag t(:add_example) %>
           <% end %>
         </p>
+        <p>
+          <%= link_to(t(:back), kata_path(@kata.id)) %>
+        </p>
       </div>
     </div>
   </div>

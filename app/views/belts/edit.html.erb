@@ -14,6 +14,9 @@
             <p><%= submit_tag t(:save) %></p>
           <% end %>
         </p>
+        <p>
+          <%= link_to(t(:back), kata_path(@belt.kata)) %>
+        </p>
       </div>
     </div>
   </div>

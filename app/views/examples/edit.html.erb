@@ -9,6 +9,9 @@
           <p><%= f.text_field :url %></p>
           <p><%= f.submit t(:edit_example) %></p>
         <% end %>
+        <p>
+          <%= link_to(t(:back), examples_path(@example.kata)) %>
+        </p>
       </div>
     </div>
   </div>

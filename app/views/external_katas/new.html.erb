@@ -5,6 +5,9 @@
         <h1 class="mt-5"><%= t(:add_kata_url) %></h1>
 
         <%= render 'form', note: @external_kata %>
+        <p>
+          <%= link_to(t(:back), root_path) %>
+        </p>
       </div>
     </div>
   </div>
