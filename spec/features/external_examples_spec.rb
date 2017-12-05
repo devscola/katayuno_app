@@ -8,6 +8,18 @@ describe 'External examples' do
       @user = log_in_user
     end
 
+    it 'can be edited his examples' do
+      another_user_id = 1234567890
+      kata = create_external_kata
+      create_external_example(user: another_user_id, kata: kata.id)
+      create_external_example(user: @user.id, kata: kata.id)
+
+      visit root_path
+      click_on('Examples')
+
+      expect(page).to have_link('Edit', count: 1)
+    end
+
     it 'can be deleted his examples' do
       another_user_id = 1234567890
       kata = create_external_kata

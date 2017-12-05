@@ -9,8 +9,11 @@ module ExternalExamplesHelper
     NO_LINK
   end
 
-  def edit_external_example(id)
+  def edit_external_example(id, user)
     text = t(:edit)
-    link_to(text, edit_external_example_path(id), { class: "btn btn-info" })
+    return link_to(text, edit_external_example_path(id), { class: "btn btn-info" }) if admin_signed_in?
+    return link_to(text, edit_external_example_path(id), { class: "btn btn-info" }) if example_belongs?(user)
+
+    NO_LINK
   end
 end
