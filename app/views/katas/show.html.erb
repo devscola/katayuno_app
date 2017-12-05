@@ -10,7 +10,21 @@
             <h2><%= t(:belts) %></h2>
             <% @belts.each do |belt| %>
               <p>
-                <%= image_tag(belt.image, { :size => '300x225' }) %> <%= belt.name %> <%= belt.description %> <%= edit_belt_button(belt.id) %> <%= delete_belt_button(belt.id) %>
+                <table>
+                  <tr>
+                    <th rowspan="2">
+                      <%= image_tag(belt.image, { :size => '300x225' }) %>
+                    </th>
+                    <th><%= belt.name %></th>
+                  </tr>
+                  <tr>
+                    <td class="belt-description"><%= belt.description %></td>
+                  </tr>
+                </table>
+                <p>
+                  <%= edit_belt_button(belt.id) %>
+                  <%= delete_belt_button(belt.id) %>
+                </p>
               </p>
             <% end %>
           </p>
