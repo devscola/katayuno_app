@@ -3,6 +3,24 @@ require 'rails_helper'
 require 'capybara'
 
 describe 'External examples' do
+  context 'by normal user' do
+    before(:each) do
+      @user = log_in_user
+    end
+
+    it 'can be deleted his examples' do
+      another_user_id = 1234567890
+      kata = create_external_kata
+      create_external_example(user: another_user_id, kata: kata.id)
+      create_external_example(user: @user.id, kata: kata.id)
+
+      visit root_path
+      click_on('Examples')
+
+      expect(page).to have_link('Delete', count: 1)
+    end
+  end
+
   context 'by admin' do
     before(:each) do
       @admin = log_in_admin
@@ -11,7 +29,7 @@ describe 'External examples' do
     it 'can be created' do
       example_text = 'External example text'
       example_link = 'http://external-example.com'
-      kata = create_external_kata
+      create_external_kata
 
       visit root_path
       click_on('Examples')
@@ -26,13 +44,12 @@ describe 'External examples' do
       example_text = 'External example text'
       example_link = 'http://external-example.com'
       kata = create_external_kata
-      example = ExternalExample.new(
+      create_external_example(
         text: example_text,
         url: example_link,
-        kata: kata.id,
-        user: @admin.id
+        user: @admin.id,
+        kata: kata.id
       )
-      example.save
 
       visit root_path
       click_on('Examples')
@@ -45,13 +62,7 @@ describe 'External examples' do
       edited_example_text = 'Edited example'
       edited_example_link = 'http://edited-example.com'
       kata = create_external_kata
-      example = ExternalExample.new(
-        text: 'External example text',
-        url: 'http://external-example.com',
-        kata: kata.id,
-        user: @admin.id
-      )
-      example.save
+      create_external_example(user: @admin.id, kata: kata.id)
 
       visit root_path
       click_on('Examples')
@@ -62,5 +73,16 @@ describe 'External examples' do
 
       expect(page).to have_link(edited_example_text, href: edited_example_link)
     end
+  end
+
+  def create_external_example(text:'External example text', url:'http://external-example.com', user:1, kata:1)
+    example = ExternalExample.new(
+      text: text,
+      url: url,
+      kata: kata,
+      user: user
+    )
+    example.save
+    example
   end
 end

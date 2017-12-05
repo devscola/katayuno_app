@@ -20,6 +20,12 @@ module ApplicationHelper
 
   private
 
+  def example_belongs?(user_id)
+    return false unless current_user
+
+    current_user.id == user_id
+  end
+
   def log_out_link
     text = t(:log_out)
     link_to(text, destroy_user_session_path, { method: :delete, class: "nav-link" })

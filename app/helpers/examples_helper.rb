@@ -14,12 +14,4 @@ module ExamplesHelper
 
     NO_LINK
   end
-
-  private
-
-  def example_belongs?(user_id)
-    return false unless current_user
-
-    current_user.id == user_id
-  end
 end
