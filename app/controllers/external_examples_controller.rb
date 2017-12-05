@@ -1,7 +1,7 @@
 class ExternalExamplesController < ApplicationController
   def index
     @kata = ExternalKata.find(params[:kata_id])
-    @examples = ExternalExample.all
+    @examples = ExternalExample.for(params[:kata_id])
   end
 
   def create
