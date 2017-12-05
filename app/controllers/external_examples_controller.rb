@@ -5,11 +5,20 @@ class ExternalExamplesController < ApplicationController
   end
 
   def create
-    example = ExternalExample.new(
-      text: params[:text],
-      url: params[:url],
-      kata: params[:id]
-    )
+    if current_user
+      example = ExternalExample.new(
+        text: params[:text],
+        url: params[:url],
+        kata: params[:id],
+        user: current_user.id
+      )
+    else
+      example = ExternalExample.new(
+        text: params[:text],
+        url: params[:url],
+        kata: params[:id]
+      )
+    end
     example.save
 
     redirect_to external_examples_path(params[:id])
