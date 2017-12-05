@@ -23,4 +23,11 @@ class ExternalExamplesController < ApplicationController
 
     redirect_to external_examples_path(params[:id])
   end
+
+  def destroy
+    example = ExternalExample.find(params[:id])
+    example.destroy
+
+    redirect_to external_examples_path(params[:kata_id])
+  end
 end

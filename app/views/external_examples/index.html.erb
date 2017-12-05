@@ -7,7 +7,9 @@
         <p>
           <ul>
             <% @examples.each do |example| %>
-              <li><%= link_to(example.text, example.url) %></li>
+              <li>
+                <%= link_to(example.text, example.url) %> <%= delete_external_example(example.id, @kata.id) %>
+              </li>
             <% end %>
           </ul>
         </p>

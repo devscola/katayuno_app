@@ -17,5 +17,23 @@ describe 'External examples' do
 
       expect(page).to have_link(example_text, href: example_link)
     end
+
+    it 'can be deleted' do
+      example_text = 'External example text'
+      example_link = 'http://external-example.com'
+      kata = create_external_kata
+      example = ExternalExample.new(
+        text: example_text,
+        url: example_link,
+        kata: kata.id
+      )
+      example.save
+
+      visit root_path
+      click_on('Examples')
+      click_on('Delete')
+
+      expect(page).not_to have_link(example_text, href: example_link)
+    end
   end
 end
