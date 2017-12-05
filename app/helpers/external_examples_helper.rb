@@ -3,8 +3,8 @@ module ExternalExamplesHelper
 
   def delete_external_example(id, kata, user)
     text = t(:delete)
-    return link_to(text, delete_external_example_path(id, kata), { method: :delete, class: "btn btn-danger"}) if admin_signed_in?
-    return link_to(text, delete_external_example_path(id, kata), { method: :delete, class: "btn btn-danger"}) if example_belongs?(user)
+    return link_to(text, delete_external_example_path(id, kata), { method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}}) if admin_signed_in?
+    return link_to(text, delete_external_example_path(id, kata), { method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}}) if example_belongs?(user)
 
     NO_LINK
   end

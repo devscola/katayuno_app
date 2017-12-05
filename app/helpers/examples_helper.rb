@@ -9,8 +9,8 @@ module ExamplesHelper
   end
 
   def delete_example(example_id, user_id)
-    return link_to(t(:delete_example), delete_example_path(example_id), { method: :delete, class: "btn btn-danger"}) if admin_signed_in?
-    return link_to(t(:delete_example), delete_example_path(example_id), { method: :delete, class: "btn btn-danger"}) if example_belongs?(user_id)
+    return link_to(t(:delete_example), delete_example_path(example_id), { method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}}) if admin_signed_in?
+    return link_to(t(:delete_example), delete_example_path(example_id), { method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}}) if example_belongs?(user_id)
 
     NO_LINK
   end
