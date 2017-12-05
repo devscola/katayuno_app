@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   patch '/examples/update/:id' => 'examples#update', as: :update_example
 
   resources :external_katas
+
+  get '/external_examples/:kata_id' => 'external_examples#index', as: :external_examples
+  post '/external_examples/create/:id' => 'external_examples#create', as: :external_example
 end

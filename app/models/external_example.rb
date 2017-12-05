@@ -1,0 +1,2 @@
+class ExternalExample < ApplicationRecord
+end

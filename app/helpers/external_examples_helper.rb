@@ -1,0 +1,2 @@
+module ExternalExamplesHelper
+end

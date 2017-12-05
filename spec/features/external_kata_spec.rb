@@ -99,13 +99,4 @@ describe 'External Katas' do
       expect(page).to have_link(edited_external_kata_name, href: edited_external_kata_url)
     end
   end
-
-  def create_external_kata(name='External kata', url='http://external-kata.com')
-    kata = ExternalKata.new(
-      name: name,
-      url: url
-    )
-    kata.save
-    kata
-  end
 end
