@@ -12,4 +12,5 @@ Belt.create(name: 'First belt', description: 'First belt description', kata: kat
 Belt.create(name: 'Second belt', description: 'Second belt description', kata: kata.id)
 Example.create(text: 'An example', url: 'http://www.google.es', kata: kata.id)
 Example.create(text: 'User example', url: 'http://www.google.es', kata: kata.id, user: normal_user.id)
-ExternalKata.create(name: 'External kata', url: 'http://www.google.es')
+external_kata = ExternalKata.create(name: 'External kata', url: 'http://www.google.es')
+ExternalExample.create(text: 'External example', url: 'http://google.es', kata: external_kata.id, user: normal_user.id)

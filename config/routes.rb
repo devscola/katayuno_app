@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   get '/external_examples/:kata_id' => 'external_examples#index', as: :external_examples
   post '/external_examples/create/:id' => 'external_examples#create', as: :external_example
   delete '/external_examples/delete/:id/:kata_id' => 'external_examples#destroy', as: :delete_external_example
+  get '/external_examples/edit/:id' => 'external_examples#edit', as: :edit_external_example
+  patch '/external_examples/update/:id' => 'external_examples#update', as: :update_external_example
 end

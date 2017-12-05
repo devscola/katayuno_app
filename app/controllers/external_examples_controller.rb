@@ -24,6 +24,19 @@ class ExternalExamplesController < ApplicationController
     redirect_to external_examples_path(params[:id])
   end
 
+  def edit
+    @example = ExternalExample.find(params[:id])
+  end
+
+  def update
+    example = ExternalExample.find(params[:id])
+    example.text = params[:external_example][:text]
+    example.url = params[:external_example][:url]
+    example.save
+
+    redirect_to external_examples_path(example.kata)
+  end
+
   def destroy
     example = ExternalExample.find(params[:id])
     example.destroy
