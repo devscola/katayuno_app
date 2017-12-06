@@ -15,7 +15,7 @@ describe 'External examples' do
     it 'cannot be deleted' do
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
 
       expect(page).not_to have_link('Delete')
     end
@@ -23,7 +23,7 @@ describe 'External examples' do
     it 'cannot be edited' do
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
 
       expect(page).not_to have_link('Edit')
     end
@@ -40,7 +40,7 @@ describe 'External examples' do
       create_external_example(user: @user.id, kata: @kata.id)
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
 
       expect(page).to have_link('Edit', count: 1)
     end
@@ -51,7 +51,7 @@ describe 'External examples' do
       create_external_example(user: @user.id, kata: @kata.id)
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
 
       expect(page).to have_link('Delete', count: 1)
     end
@@ -67,7 +67,7 @@ describe 'External examples' do
       example_link = 'http://external-example.com'
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
       fill_in('text', with: example_text)
       fill_in('url', with: example_link)
       click_on('Save')
@@ -86,7 +86,7 @@ describe 'External examples' do
       )
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
       click_on('Delete')
 
       expect(page).not_to have_link(example_text, href: example_link)
@@ -98,7 +98,7 @@ describe 'External examples' do
       create_external_example(user: @admin.id, kata: @kata.id)
 
       visit root_path
-      click_on('Examples')
+      click_on('Solution examples')
       click_on('Edit')
       fill_in('external_example_text', with: edited_example_text)
       fill_in('external_example_url', with: edited_example_link)

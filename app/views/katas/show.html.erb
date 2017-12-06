@@ -7,7 +7,6 @@
           <p><%= @kata.description.html_safe %></p>
           <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
           <p>
-            <h2><%= t(:belts) %></h2>
             <% @belts.each do |belt| %>
               <p>
                 <table>

@@ -8,7 +8,7 @@ describe 'Examples' do
     example_text = 'Example text'
 
     visit kata_path(kata.id)
-    click_on('Examples')
+    click_on('Solution examples')
     fill_in('text', with: example_text)
     fill_in('url', with: 'http://example.url')
     click_on('Add Example')
