@@ -40,6 +40,12 @@
   height: 200px;
 }
 
+.belt-resize-image {
+  object-fit: contain;
+  width: 300px;
+  height: 300px;
+}
+
 .field-explanation {
   font-style: italic;
   color: grey;

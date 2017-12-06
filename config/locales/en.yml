@@ -42,5 +42,5 @@ en:
   the_katayuno_explanation: 'Katayuno (Katas + Desayuno) is a weekly open event where to pair code katas to learn TDD while enjoying a freshly baked breakfast.<p>If you’d like to know more about Katayuno, check out <a href="https://medium.com/@FlywireEng/katayuno-c2c19c65e66a", target="_blank">this</a> article.</p>'
   the_meetup_explanation: 'The <a href="https://www.meetup.com/es-ES/Aprende-a-programar-en-Valencia/events/242889981/", target="_blank">meetup</a> is hosted by <a href="https://www.flywire.com/", target="_blank">Flywire</a> and organized by <a href="http://www.devscola.org", target="_blank">Devscola</a>.'
   description_explanation: 'The description can contain HTML'
-  image_explanation: 'Maximum image size is 300x225'
+  image_explanation: 'The image will be resized with a maximum of 300x300 px'
   url_explanation: 'The URL has to be HTTPS'
