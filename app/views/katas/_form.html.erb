@@ -3,5 +3,8 @@
   <p><%= f.text_field(:title, class: 'kata-title') %></p>
   <p><%= f.label t(:description) %></p>
   <p><%= f.text_area(:description, class: 'kata-description') %></p>
+  <p class="description-explanation">
+    <%= t(:description_explanation) %>
+  </p>
   <p><%= f.submit t(:save) %></p>
 <% end %>

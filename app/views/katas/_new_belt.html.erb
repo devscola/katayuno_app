@@ -8,6 +8,9 @@
       <p><%= text_field_tag(:image, nil, class: 'belt-image') %></p>
       <p><%= label_tag t(:description) %></p>
       <p><%= text_area_tag(:description, nil, class: 'belt-description') %></p>
+      <p class="description-explanation">
+        <%= t(:description_explanation) %>
+      </p>
       <p><%= submit_tag t(:add_belt) %></p>
     <% end %>
   </p>

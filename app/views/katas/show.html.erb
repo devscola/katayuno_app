@@ -18,7 +18,9 @@
                     <th><%= belt.name %></th>
                   </tr>
                   <tr>
-                    <td class="belt-description"><%= belt.description %></td>
+                    <td class="belt-description">
+                      <%= belt.description.html_safe %>
+                    </td>
                   </tr>
                 </table>
                 <p>
