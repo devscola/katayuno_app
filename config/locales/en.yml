@@ -43,3 +43,4 @@ en:
   the_meetup_explanation: 'The <a href="https://www.meetup.com/es-ES/Aprende-a-programar-en-Valencia/events/242889981/", target="_blank">meetup</a> is hosted by <a href="https://www.flywire.com/", target="_blank">Flywire</a> and organized by <a href="http://www.devscola.org", target="_blank">Devscola</a>.'
   description_explanation: 'The description can contain HTML'
   image_explanation: 'Maximum image size is 300x225'
+  url_explanation: 'The URL has to be HTTPS'

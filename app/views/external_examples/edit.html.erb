@@ -7,12 +7,15 @@
           <p><%= f.text_field :text %></p>
           <p><%= f.label t(:url) %></p>
           <p><%= f.text_field :url %></p>
+          <p class="field-explanation">
+            <%= t(:url_explanation) %>
+          </p>
           <p><%= f.submit t(:save) %></p>
         <% end %>
-      </div>
       <p>
         <%= link_to(t(:back), external_examples_path(@example.kata)) %>
       </p>
+      </div>
     </div>
   </div>
 </section>

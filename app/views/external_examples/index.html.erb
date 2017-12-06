@@ -19,6 +19,9 @@
             <%= text_field_tag :text %>
             <%= label_tag t(:url) %>
             <%= text_field_tag :url %>
+            <p class="field-explanation">
+              <%= t(:url_explanation) %>
+            </p>
             <%= submit_tag t(:save) %>
           <% end %>
         </p>

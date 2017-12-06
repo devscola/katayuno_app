@@ -7,6 +7,9 @@
           <p><%= f.text_field :text %></p>
           <p><%= f.label t(:url) %></p>
           <p><%= f.text_field :url %></p>
+          <p class="field-explanation">
+            <%= t(:url_explanation) %>
+          </p>
           <p><%= f.submit t(:edit_example) %></p>
         <% end %>
         <p>
