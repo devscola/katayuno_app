@@ -59,18 +59,12 @@ Your are free to contribute with the application.
 
 ## Git repository
 
-The application code is in a github repository:
-
-- `https://github.com/zerolive/katayuno_app`
+The application code is in [this](https://github.com/zerolive/katayuno_app) github repository.
 
 ## Continuous integration
 
-The github repository is integrated with a travis-ci that run tests with every new commit or pull request, you can check it here:
-
-- `https://travis-ci.org/zerolive/katayuno_app`
+The github repository is integrated with a travis-ci that run tests with every new commit or pull request, you can check it [here](https://travis-ci.org/zerolive/katayuno_app).
 
 ## Auto deployments
 
-After a new commit in the master branch pass the CI, automatly the application is deployed in a heroku machine. Visit the application with:
-
-- `https://katayuno-app.herokuapp.com/`
+After a new commit in the master branch pass the CI, automatly the application is deployed in a heroku machine. Visit the application click in [here](https://katayuno-app.herokuapp.com/).
