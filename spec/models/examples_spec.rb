@@ -4,7 +4,7 @@ describe 'Example' do
   it 'belongs to a Kata' do
     example = Example.new(
       text: 'Example text',
-      url: 'http://example.url',
+      url: 'https://example.url',
       kata: nil
     )
 
@@ -12,6 +12,20 @@ describe 'Example' do
 
     expect(example.errors.size).to eq(1)
     expect(example.errors[:kata]).to eq(["can't be blank"])
+  end
+
+  it 'has a HTTPS url' do
+    any_kata = 1
+    example = Example.new(
+      text: 'Example text',
+      url: 'http://example.url',
+      kata: any_kata
+    )
+
+    example.save
+
+    expect(example.errors.size).to eq(1)
+    expect(example.errors[:url]).to eq(["is invalid"])
   end
 
   it 'has to have a text and url' do

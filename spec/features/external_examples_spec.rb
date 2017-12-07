@@ -64,7 +64,7 @@ describe 'External examples' do
 
     it 'can be created' do
       example_text = 'External example text'
-      example_link = 'http://external-example.com'
+      example_link = 'https://external-example.com'
 
       visit root_path
       click_on('Solution examples')
@@ -77,7 +77,7 @@ describe 'External examples' do
 
     it 'can be deleted' do
       example_text = 'External example text'
-      example_link = 'http://external-example.com'
+      example_link = 'https://external-example.com'
       create_external_example(
         text: example_text,
         url: example_link,
@@ -94,7 +94,7 @@ describe 'External examples' do
 
     it 'can be edited' do
       edited_example_text = 'Edited example'
-      edited_example_link = 'http://edited-example.com'
+      edited_example_link = 'https://edited-example.com'
       create_external_example(user: @admin.id, kata: @kata.id)
 
       visit root_path
@@ -108,7 +108,7 @@ describe 'External examples' do
     end
   end
 
-  def create_external_example(text:'External example text', url:'http://external-example.com', user:1, kata:1)
+  def create_external_example(text:'External example text', url:'https://external-example.com', user:1, kata:1)
     example = ExternalExample.new(
       text: text,
       url: url,

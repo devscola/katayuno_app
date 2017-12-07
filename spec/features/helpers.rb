@@ -42,7 +42,7 @@ def create_kata(title='Kata title', description='Kata description')
   kata
 end
 
-def create_example_with_user(text='Example text', url='http://example.url', kata_id=nil, user_id=nil)
+def create_example_with_user(text='Example text', url='https://example.url', kata_id=nil, user_id=nil)
   if kata_id.nil?
     kata = create_kata
     kata_id = kata.id
@@ -61,7 +61,7 @@ def create_example_with_user(text='Example text', url='http://example.url', kata
   example
 end
 
-def create_external_kata(name='External kata', url='http://external-kata.com')
+def create_external_kata(name='External kata', url='https://external-kata.com')
   kata = ExternalKata.new(
     name: name,
     url: url

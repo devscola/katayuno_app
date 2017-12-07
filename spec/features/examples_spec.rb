@@ -10,7 +10,7 @@ describe 'Examples' do
     visit kata_path(kata.id)
     click_on('Solution examples')
     fill_in('text', with: example_text)
-    fill_in('url', with: 'http://example.url')
+    fill_in('url', with: 'https://example.url')
     click_on('Add Example')
 
     expect(page).to have_content(example_text)
@@ -38,7 +38,7 @@ describe 'Examples' do
       visit examples_path(example.kata)
       click_on('Edit Example')
       fill_in('example_text', with: edited_text)
-      fill_in('example_url', with: 'http://edited-example.url')
+      fill_in('example_url', with: 'https://edited-example.url')
       click_on('Edit Example')
 
       expect(page).to have_content(edited_text)
@@ -50,14 +50,14 @@ describe 'Examples' do
     kata = create_kata
     example = Example.new(
       text: 'User example text',
-      url: 'http://example.url',
+      url: 'https://example.url',
       kata: kata.id,
       user: user.id
     )
     example.save
     example = Example.new(
       text: 'Another user example',
-      url: 'http://example.url',
+      url: 'https://example.url',
       kata: kata.id
     )
     example.save
@@ -68,7 +68,7 @@ describe 'Examples' do
     expect(page).to have_content('Delete Example', count: 1)
   end
 
-  def create_example(text='Example text', url='http://example.url', kata_id=nil)
+  def create_example(text='Example text', url='https://example.url', kata_id=nil)
     if kata_id.nil?
       kata = create_kata
       kata_id = kata.id

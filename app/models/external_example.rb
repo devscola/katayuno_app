@@ -1,5 +1,5 @@
 class ExternalExample < ApplicationRecord
-  URL_FORMAT = /\A(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i
+  URL_FORMAT = /\A(https:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\.-]*)*\/?\Z/i
 
   validates :kata, presence: true, allow_blank: false
   validates :text, presence: true, allow_blank: false
