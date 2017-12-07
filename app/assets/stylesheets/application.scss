@@ -46,6 +46,11 @@
   height: 300px;
 }
 
+.belt-table {
+  table-layout: fixed;
+  min-width: 600px;
+}
+
 .field-explanation {
   font-style: italic;
   color: grey;
