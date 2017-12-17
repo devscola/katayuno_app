@@ -26,7 +26,7 @@ describe 'Examples' do
       example = create_example(example_text)
 
       visit examples_path(example.kata)
-      click_on('Delete Example')
+      click_on('delete')
 
       expect(page).not_to have_content(example_text)
     end
@@ -36,7 +36,7 @@ describe 'Examples' do
       edited_text = 'Edited example'
 
       visit examples_path(example.kata)
-      click_on('Edit Example')
+      click_on('mode_edit')
       fill_in('example_text', with: edited_text)
       fill_in('example_url', with: 'https://edited-example.url')
       click_on('Edit Example')
@@ -64,8 +64,8 @@ describe 'Examples' do
 
     visit examples_path(kata.id)
 
-    expect(page).to have_content('Edit Example', count: 1)
-    expect(page).to have_content('Delete Example', count: 1)
+    expect(page).to have_content('mode_edit', count: 1)
+    expect(page).to have_content('delete', count: 1)
   end
 
   def create_example(text='Example text', url='https://example.url', kata_id=nil)

@@ -50,7 +50,7 @@ describe 'Belts' do
       belt.save
 
       visit kata_path(kata.id)
-      click_on('Edit Belt')
+      click_on('mode_edit')
       fill_in(:name, with: new_belt_name)
       fill_in(:description, with: new_belt_description)
       click_on('Save')
@@ -69,7 +69,7 @@ describe 'Belts' do
     belt.save
 
     visit kata_path(kata.id)
-    click_on('Delete belt')
+    click_on('delete')
 
     expect(page).to have_content(kata.title)
     expect(page).not_to have_content(belt.name)

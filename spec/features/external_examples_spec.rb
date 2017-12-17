@@ -42,7 +42,7 @@ describe 'External examples' do
       visit root_path
       click_on('Solution examples')
 
-      expect(page).to have_link('Edit', count: 1)
+      expect(page).to have_link('mode_edit', count: 1)
     end
 
     it 'can be deleted his examples' do
@@ -53,7 +53,7 @@ describe 'External examples' do
       visit root_path
       click_on('Solution examples')
 
-      expect(page).to have_link('Delete', count: 1)
+      expect(page).to have_link('delete', count: 1)
     end
   end
 
@@ -87,7 +87,7 @@ describe 'External examples' do
 
       visit root_path
       click_on('Solution examples')
-      click_on('Delete')
+      click_on('delete')
 
       expect(page).not_to have_link(example_text, href: example_link)
     end
@@ -99,7 +99,7 @@ describe 'External examples' do
 
       visit root_path
       click_on('Solution examples')
-      click_on('Edit')
+      click_on('mode_edit')
       fill_in('external_example_text', with: edited_example_text)
       fill_in('external_example_url', with: edited_example_link)
       click_on('Save')

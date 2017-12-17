@@ -1,5 +1,4 @@
 require_relative 'helpers'
-require_relative 'helpers'
 require 'rails_helper'
 require 'capybara'
 
@@ -80,7 +79,7 @@ describe 'External Katas' do
       external_kata = create_external_kata
 
       visit root_path
-      click_on('Delete')
+      click_on('delete')
 
       expect(page).not_to have_content(external_kata.name)
     end
@@ -91,7 +90,7 @@ describe 'External Katas' do
       edited_external_kata_url = 'http://edited-external-kata.com'
 
       visit root_path
-      click_on('Edit')
+      click_on('mode_edit')
       fill_in('external_kata_name', with: edited_external_kata_name)
       fill_in('external_kata_url', with: edited_external_kata_url)
       click_on('Save')

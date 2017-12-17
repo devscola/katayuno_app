@@ -81,7 +81,7 @@ describe 'Katas' do
       kata.save
 
       visit katas_path
-      click_on('Edit')
+      click_on('mode_edit')
       fill_in(:kata_title, with: edited_title)
       fill_in(:kata_description, with: edited_description)
       click_on('Save')
@@ -100,7 +100,7 @@ describe 'Katas' do
       kata.save
 
       visit katas_path
-      click_on('Delete')
+      click_on('delete')
 
       expect(page).not_to have_content(title)
       expect(page).not_to have_content(description)
