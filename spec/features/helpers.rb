@@ -60,12 +60,3 @@ def create_example_with_user(text='Example text', url='https://example.url', kat
   example.save
   example
 end
-
-def create_external_kata(name='External kata', url='https://external-kata.com')
-  kata = ExternalKata.new(
-    name: name,
-    url: url
-  )
-  kata.save
-  kata
-end

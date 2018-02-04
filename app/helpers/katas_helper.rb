@@ -1,32 +1,6 @@
 module KatasHelper
   NO_LINK = ''
 
-  def external_examples_button(id)
-    text = t(:examples)
-    link_to(text, external_examples_path(id), {class: "btn btn-primary"})
-  end
-
-  def edit_external_kata_button(id)
-    text = 'mode_edit'
-    return link_to(text, edit_external_kata_path(id), {class: "material-icons"}) if admin_signed_in?
-
-    NO_LINK
-  end
-
-  def add_external_kata_button
-    text = t(:add_external_kata)
-    return link_to(text, new_external_kata_path, {class: "btn btn-primary"}) if admin_signed_in?
-
-    NO_LINK
-  end
-
-  def delete_external_kata_button(id)
-    text = 'delete'
-    return link_to(text, external_kata_path(id), { method: :delete, class: "material-icons", id: 'delete', data: {confirm: "Are you sure?"}}) if admin_signed_in?
-
-    NO_LINK
-  end
-
   def delete_belt_button(id)
     text = 'delete'
     return link_to(text, delete_belt_path(id), { method: :delete, class: "material-icons", id: 'delete', data: {confirm: "Are you sure?"}}) if admin_signed_in?

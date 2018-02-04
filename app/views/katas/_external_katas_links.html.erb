@@ -1,5 +1,0 @@
-<% @external_katas.each do |external_kata| %>
-  <li>
-    <%= link_to external_kata.name, external_kata.url, { target: '_blank' } %> <%= edit_external_kata_button(external_kata.id) %> <%= delete_external_kata_button(external_kata.id) %> <%= external_examples_button(external_kata.id) %>
-  </li>
-<% end %>
