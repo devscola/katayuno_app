@@ -14,7 +14,11 @@
                     <th rowspan="2">
                       <%= image_tag(belt.image, { class: 'belt-resize-image' }) %>
                     </th>
-                    <th><%= belt.name %></th>
+                    <th>
+                      <%= belt.name %>
+                      <%= edit_belt_button(belt.id) %>
+                      <%= delete_belt_button(belt.id) %>
+                    </th>
                   </tr>
                   <tr>
                     <td class="belt-description">
@@ -22,10 +26,6 @@
                     </td>
                   </tr>
                 </table>
-                <p>
-                  <%= edit_belt_button(belt.id) %>
-                  <%= delete_belt_button(belt.id) %>
-                </p>
               </p>
             <% end %>
           </p>
