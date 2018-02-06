@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_admin!, only: [:index, :become_admin, :revoke_admin, :destroy]
   before_action :set_user, only: [:become_admin, :revoke_admin, :destroy]
 
   def index
