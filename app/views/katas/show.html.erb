@@ -6,6 +6,11 @@
         <p>
           <p><%= @kata.description.html_safe %></p>
           <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
+          <% if admin_signed_in? %>
+            <div class="alert alert-info" role="alert">
+              <%= t(:belts_order_explanation) %>
+            </div>
+          <% end %>
           <p>
             <% @belts.each do |belt| %>
               <p>

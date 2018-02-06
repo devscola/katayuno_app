@@ -43,3 +43,4 @@ en:
   description_explanation: 'The description can contain HTML'
   image_explanation: 'The image will be resized with a maximum of 300x300 px'
   url_explanation: 'The URL has to be HTTPS'
+  belts_order_explanation: 'Belts are ordered by update time (Last updated moves to top)'
