@@ -42,4 +42,36 @@ describe 'Example' do
     expect(example.errors[:text]).to eq(["can't be blank"])
     expect(example.errors[:url]).to eq(["can't be blank", "is invalid"])
   end
+
+  it 'retrieves the examples for a Kata' do
+    kata = Kata.new(title: 'any', description: 'any')
+    kata.save
+    example = Example.new(
+      text: 'text',
+      url: 'https://url.com',
+      kata: kata.id
+    )
+    example.save
+
+    retrieved_examples = Example.for(kata.id)
+
+    expect(retrieved_examples.to_a).to eq([example])
+  end
+
+  it 'retrieves the examples that belongs to user' do
+    user_id = 1
+    kata = Kata.new(title: 'any', description: 'any')
+    kata.save
+    example = Example.new(
+      text: 'text',
+      url: 'https://url.com',
+      kata: kata.id,
+      user: user_id
+    )
+    example.save
+
+    retrieved_examples = Example.belongs(kata.id)
+
+    expect(retrieved_examples.to_a).to eq([example])
+  end
 end
