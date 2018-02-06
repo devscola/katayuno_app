@@ -63,4 +63,18 @@ describe 'Belt' do
 
     expect(belt.image).to eq(default_image)
   end
+
+  it 'retrieves katas ordered by update at' do
+    kata_id = 1
+    last_updated = Belt.new(name: 'Any name', description: 'Any description', kata: kata_id)
+    last_updated.save
+    first_updated = Belt.new(name: 'Any name', description: 'Any description', kata: kata_id)
+    first_updated.save
+    first_updated.update_attributes(updated_at: 10.minutes.ago)
+    last_updated.update_attributes(updated_at: 1.minutes.ago)
+
+    belts = Belt.ordered_for(kata_id)
+
+    expect(belts).to eq([first_updated, last_updated])
+  end
 end
