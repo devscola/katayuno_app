@@ -1,53 +1,61 @@
 class ExamplesController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
+  before_action :set_kata, only: [:index, :create]
+  before_action :set_example, only: [:edit, :update, :destroy]
 
   def index
-    @kata = Kata.find(params[:kata_id])
     @examples = Example.for(@kata.id)
   end
 
   def create
-    kata = Kata.find(params[:kata_id])
-
     if current_user
       user_id = current_user.id
-      example = Example.new(
+      @example = Example.new(
         text: params[:text],
         url: params[:url],
-        kata: kata.id,
+        kata: @kata.id,
         user: user_id
       )
-      example.save
+      @example.save
     else
-      example = Example.new(
+      @example = Example.new(
         text: params[:text],
         url: params[:url],
-        kata: kata.id
+        kata: @kata.id
       )
-      example.save
+      @example.save
     end
 
-    redirect_to examples_path(kata.id)
+    redirect_to examples_path(@kata.id)
   end
 
   def edit
-    @example = Example.find(params[:id])
   end
 
   def update
-    example = Example.find(params[:id])
-    example.text = params[:example][:text]
-    example.url = params[:example][:url]
-    example.save
+    @example.update(
+      text: params[:example][:text],
+      url: params[:example][:url]
+    )
 
-    redirect_to examples_path(example.kata)
+    redirect_to examples_path(@example.kata)
   end
 
   def destroy
-    example = Example.find(params[:id])
-    kata = example.kata
-    example.destroy
+    kata = @example.kata
+
+    @example.destroy
 
     redirect_to examples_path(kata)
+  end
+
+  private
+
+  def set_kata
+    @kata = Kata.find(params[:kata_id])
+  end
+
+  def set_example
+    @example = Example.find(params[:id])
   end
 end

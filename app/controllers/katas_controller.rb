@@ -7,8 +7,7 @@ class KatasController < ApplicationController
   end
 
   def show
-    kata_id = params[:id]
-    @belts = Belt.ordered_for(kata_id)
+    @belts = Belt.ordered_for(params[:id])
   end
 
   def new
