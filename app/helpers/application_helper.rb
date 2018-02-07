@@ -8,7 +8,9 @@ module ApplicationHelper
   end
 
   def logged_user
-    current_user.email if user_signed_in?
+    return current_user.email if user_signed_in?
+
+    ''
   end
 
   def admin_users
