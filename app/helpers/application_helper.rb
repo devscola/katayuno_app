@@ -22,10 +22,12 @@ module ApplicationHelper
 
   private
 
-  def example_belongs?(user_id)
+  def user_owns?(example_id)
     return false unless current_user
 
-    current_user.id == user_id
+    example = Example.find(example_id)
+
+    current_user.id == example.user
   end
 
   def log_out_link
@@ -40,8 +42,7 @@ module ApplicationHelper
 
   def admin_signed_in?
     return false unless user_signed_in?
-    return false unless current_user.admin?
 
-    true
+    current_user.admin?
   end
 end

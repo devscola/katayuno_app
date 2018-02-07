@@ -69,5 +69,7 @@ describe ApplicationHelper do
     user = User.new(email: email, password: '12345678')
     user.save
     sign_in(user)
+
+    user
   end
 end

@@ -5,7 +5,7 @@
         <h1 class="mt-5"><%= "#{@kata.title}'s #{t(:examples)}" %></h1>
         <ul>
           <% @examples.each do |example| %>
-            <li><%= link_to(example.text, example.url, target: "_blank") %> <%= edit_example(example.id, example.user) %> <%= delete_example(example.id, example.user) %></li>
+            <li><%= link_to(example.text, example.url, target: "_blank") %> <%= edit_example(example.id) %> <%= delete_example(example.id) %></li>
           <% end %>
         </ul>
         <p>
