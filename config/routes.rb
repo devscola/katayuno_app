@@ -5,20 +5,20 @@ Rails.application.routes.draw do
   get '/users' => 'users#index', as: :users
   patch '/become_admin/:id' => 'users#become_admin', as: :become_admin
   patch '/revoke_admin/:id' => 'users#revoke_admin', as: :revoke_admin
-  delete '/user/:id/delete' => 'users#destroy', as: :delete_user
+  delete '/users/:id' => 'users#destroy', as: :destroy_user
 
   resources :katas
 
-  post '/belt/create/:kata_id' => 'belts#create', as: :belt
-  delete '/belt/:id/delete' => 'belts#destroy', as: :delete_belt
-  get '/belt/:id/edit' => 'belts#edit', as: :edit_belt
-  patch '/belt/:id/update' => 'belts#update', as: :update_belt
+  post '/belts/:kata_id' => 'belts#create', as: :belt
+  delete '/belts/:id' => 'belts#destroy', as: :destroy_belt
+  get '/belts/:id' => 'belts#edit', as: :edit_belt
+  patch '/belts/:id' => 'belts#update', as: :update_belt
 
   get '/examples/:kata_id' => 'examples#index', as: :examples
-  post '/examples/create/:kata_id' => 'examples#create', as: :example
-  delete '/examples/delete/:id' => 'examples#destroy', as: :delete_example
+  post '/examples/:kata_id' => 'examples#create', as: :example
+  delete '/examples/:id' => 'examples#destroy', as: :destroy_example
   get '/examples/edit/:id' => 'examples#edit', as: :edit_example
-  patch '/examples/update/:id' => 'examples#update', as: :update_example
+  patch '/examples/:id' => 'examples#update', as: :update_example
 
   post '/ping' => 'ping#ping', as: :ping
 end

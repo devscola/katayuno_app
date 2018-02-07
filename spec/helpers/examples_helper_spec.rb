@@ -96,7 +96,7 @@ describe ExamplesHelper do
 
       link = helper.delete_example(example.id)
 
-      expect(link).to include('/examples/delete')
+      expect(link).to include('delete')
     end
 
     it 'returns delete example link for logged admin' do
@@ -110,7 +110,7 @@ describe ExamplesHelper do
 
       link = helper.delete_example(example.id)
 
-      expect(link).to include('/examples/delete')
+      expect(link).to include('delete')
     end
   end
 

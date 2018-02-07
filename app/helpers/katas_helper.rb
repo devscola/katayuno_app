@@ -3,7 +3,7 @@ module KatasHelper
 
   def delete_belt_button(id)
     text = 'delete'
-    return link_to(text, delete_belt_path(id), { method: :delete, class: "material-icons", id: 'delete', data: {confirm: "Are you sure?"}}) if admin_signed_in?
+    return link_to(text, destroy_belt_path(id), { method: :delete, class: "material-icons", id: 'delete', data: {confirm: "Are you sure?"}}) if admin_signed_in?
 
     NO_LINK
   end

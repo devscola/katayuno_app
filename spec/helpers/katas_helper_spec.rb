@@ -27,7 +27,7 @@ describe KatasHelper do
 
       link = helper.delete_belt_button(belt_id)
 
-      expect(link).to include('/delete')
+      expect(link).to include('delete')
     end
   end
 
@@ -55,7 +55,7 @@ describe KatasHelper do
 
       link = helper.edit_belt_button(belt_id)
 
-      expect(link).to include('/edit')
+      expect(link).to include('mode_edit')
     end
   end
 

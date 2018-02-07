@@ -17,7 +17,7 @@ module ExamplesHelper
   def delete_example(id)
     link = link_to(
       'delete',
-      delete_example_path(id),
+      destroy_example_path(id),
       {
         method: :delete,
         class: "material-icons",

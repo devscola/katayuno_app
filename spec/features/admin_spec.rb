@@ -36,7 +36,7 @@ describe 'Admin' do
   end
 
   it 'can delete an user' do
-    url = "/user/#{@user.id}/delete"
+    url = "/users/#{@user.id}"
 
     click_on('Admin Users')
     find(:xpath, "//a[@href='#{url}']").click
