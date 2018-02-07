@@ -1,8 +1,9 @@
 module UsersHelper
   def handle_admin(user)
-    return become_admin_link(user.id) unless user.admin?
+    return '' unless admin_signed_in?
 
-    revoke_admin_link(user.id)
+    return become_admin_link(user.id) unless user.admin?
+    return revoke_admin_link(user.id)
   end
 
   private
