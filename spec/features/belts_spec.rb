@@ -60,50 +60,50 @@ describe 'Belts' do
     end
 
     it 'can be deleted' do
-    kata = create_kata
-    belt = Belt.new(
-      name: 'Belt for delete',
-      description: 'Belt description',
-      kata: kata.id
-    )
-    belt.save
-
-    visit kata_path(kata.id)
-    click_on('delete')
-
-    expect(page).to have_content(kata.title)
-    expect(page).not_to have_content(belt.name)
-    expect(page).not_to have_content(belt.description)
-  end
-  end
-
-  context 'when a norma user is logged' do
-    before(:each) do
-      log_in_user
-    end
-
-    it 'can not be added' do
-      kata = create_kata
-
-      visit kata_path(kata.id)
-
-      expect(page).not_to have_content('Add Belt')
-      expect(page).not_to have_content('Name')
-      expect(page).not_to have_content('Description')
-    end
-
-    it 'can not be edited' do
       kata = create_kata
       belt = Belt.new(
-        name: 'Belt for be edited',
-        description: 'Belt for be edited',
+        name: 'Belt for delete',
+        description: 'Belt description',
         kata: kata.id
       )
       belt.save
 
-      visit edit_belt_path(belt.id)
+      visit kata_path(kata.id)
+      click_on('delete')
 
-      expect(page).not_to have_content('Edit Belt')
+      expect(page).to have_content(kata.title)
+      expect(page).not_to have_content(belt.name)
+      expect(page).not_to have_content(belt.description)
+    end
+  end
+
+  context 'when a user is logged' do
+    before(:each) do
+      log_in_user
+    end
+
+    it 'cannot handle it' do
+      kata = create_kata
+
+      visit kata_path(kata.id)
+
+      expect(page).to have_content(kata.title)
+      expect(page).not_to have_content('Add Belt')
+      expect(page).not_to have_content('mode_edit')
+      expect(page).not_to have_content('delete')
+    end
+  end
+
+  context 'when a user is not logged' do
+    it 'cannot handle it' do
+      kata = create_kata
+
+      visit kata_path(kata.id)
+
+      expect(page).to have_content(kata.title)
+      expect(page).not_to have_content('Add Belt')
+      expect(page).not_to have_content('mode_edit')
+      expect(page).not_to have_content('delete')
     end
   end
 end
