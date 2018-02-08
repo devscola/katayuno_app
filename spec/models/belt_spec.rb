@@ -25,8 +25,8 @@ describe 'Belt' do
     belt.save
 
     expect(belt.errors.size).to eq(2)
-    expect(belt.errors[:name]).to eq(["can't be blank"])
-    expect(belt.errors[:description]).to eq(["can't be blank"])
+    expect(belt.errors[:name]).to eq([empty_name_messsage_error])
+    expect(belt.errors[:description]).to eq([empty_description_message_error])
   end
 
   it 'needs an URL if has image' do
@@ -43,7 +43,7 @@ describe 'Belt' do
     belt.save
 
     expect(belt.errors.size).to eq(1)
-    expect(belt.errors[:image]).to eq(["is invalid"])
+    expect(belt.errors[:image]).to eq([wrong_url_image_format_message_error])
   end
 
   it 'has a default image' do
@@ -76,5 +76,17 @@ describe 'Belt' do
     belts = Belt.ordered_for(kata_id)
 
     expect(belts).to eq([first_updated, last_updated])
+  end
+
+  def empty_name_messsage_error
+    I18n.t(:empty_name)
+  end
+
+  def empty_description_message_error
+    I18n.t(:empty_description)
+  end
+
+  def wrong_url_image_format_message_error
+    I18n.t(:wrong_url_image_format)
   end
 end
