@@ -28,6 +28,7 @@ describe 'Katas' do
 
       visit katas_path
 
+      expect(page).to have_content('Kata-logue')
       expect(page).not_to have_content('add_kata')
     end
 
@@ -40,15 +41,9 @@ describe 'Katas' do
 
       visit katas_path
 
+      expect(page).to have_content('Kata-logue')
       expect(page).not_to have_content('edit')
       expect(page).not_to have_content('delete')
-    end
-
-    it 'is redirected to root path when add a new kata' do
-
-      visit new_kata_path
-
-      expect(page).not_to have_content('New Kata')
     end
   end
 
