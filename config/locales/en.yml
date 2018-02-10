@@ -51,3 +51,4 @@ en:
   wrong_url_format: 'URL has to be https://'
   wrong_url_image_format: 'Image has to be an URL with an image in jpg or png'
   empty_name: 'It has to have a name'
+  errors_finded: 'Has been found some errors:'

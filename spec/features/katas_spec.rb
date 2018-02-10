@@ -100,5 +100,48 @@ describe 'Katas' do
       expect(page).not_to have_content(title)
       expect(page).not_to have_content(description)
     end
+
+    it 'shows errors when create an empty kata' do
+
+      visit root_path
+      click_on(add_kata_button)
+      click_on(save_button)
+
+      expect(page).to have_content(title_error_message)
+      expect(page).to have_content(description_error_message)
+    end
+
+    it 'shows errors when create an empty kata' do
+      kata = Kata.new(
+        title: 'Any',
+        description: 'Any'
+      )
+      kata.save
+
+      visit root_path
+      click_on('mode_edit')
+      fill_in(:kata_title, with: '')
+      fill_in(:kata_description, with: '')
+      click_on(save_button)
+
+      expect(page).to have_content(title_error_message)
+      expect(page).to have_content(description_error_message)
+    end
+
+    def save_button
+      I18n.t(:save)
+    end
+
+    def add_kata_button
+      I18n.t(:add_kata)
+    end
+
+    def title_error_message
+      I18n.t(:empty_title)
+    end
+
+    def description_error_message
+      I18n.t(:empty_description)
+    end
   end
 end

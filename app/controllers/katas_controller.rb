@@ -15,19 +15,24 @@ class KatasController < ApplicationController
   end
 
   def create
-    kata = Kata.new(kata_params)
-    kata.save
+    @kata = Kata.new(kata_params)
 
-    redirect_to kata_path(kata.id)
+    if @kata.save
+      redirect_to kata_path(@kata.id)
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @kata.update(kata_params)
-
-    redirect_to kata_path(@kata.id)
+    if @kata.update(kata_params)
+      redirect_to kata_path(@kata.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -1,3 +1,14 @@
+<% if @kata.errors.any? %>
+  <p>
+    <%= t(:errors_finded) %>
+    <ul>
+      <% @kata.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
 <%= form_for(@kata) do |f| %>
   <p><%= f.label t(:title) %></p>
   <p><%= f.text_field(:title, class: 'kata-title') %></p>
