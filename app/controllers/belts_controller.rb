@@ -3,28 +3,38 @@ class BeltsController < ApplicationController
   before_action :set_belt, only: [:edit, :update, :destroy]
 
   def create
+    @kata = Kata.find(params[:kata_id])
     @belt = Belt.new(
       name: params[:name],
       description: params[:description],
       image: params[:image],
       kata: params[:kata_id]
     )
-    @belt.save
 
-    redirect_to kata_path(params[:kata_id])
+    if @belt.save
+      redirect_to kata_path(params[:kata_id])
+    else
+      @belts = Belt.all
+      render 'katas/show'
+    end
   end
 
   def edit
   end
 
   def update
-    @belt.update(
+    result = @belt.update(
       name: params[:name],
       description: params[:description],
       image: params[:image]
     )
 
-    redirect_to kata_path(@belt.kata)
+    if result
+      redirect_to kata_path(@belt.kata)
+    else
+      render :edit
+    end
+
   end
 
   def destroy

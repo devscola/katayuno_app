@@ -111,7 +111,7 @@ describe 'Katas' do
       expect(page).to have_content(description_error_message)
     end
 
-    it 'shows errors when create an empty kata' do
+    it 'shows errors when edit an empty kata' do
       kata = Kata.new(
         title: 'Any',
         description: 'Any'

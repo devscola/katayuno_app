@@ -85,7 +85,11 @@ describe BeltsController do
     end
 
     it 'POST create returns redirect' do
-      params = { kata_id: 1 }
+      kata = Kata.new(title: 'Any', description: 'Any')
+      kata.save
+      belt = Belt.new(name: 'any', description: 'any', kata: kata.id)
+      belt.save
+      params = { kata_id: kata.id, name: 'name', description: 'description' }
 
       post :create, params: params
 
@@ -115,7 +119,7 @@ describe BeltsController do
     it 'PATCH update returns redirect' do
       belt = Belt.new(name: 'name', description: 'desc', kata: 1)
       belt.save
-      params = { id: belt.id }
+      params = { id: belt.id, name: 'name', description: 'description' }
 
       patch :update, params: params
 

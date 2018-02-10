@@ -75,6 +75,59 @@ describe 'Belts' do
       expect(page).not_to have_content(belt.name)
       expect(page).not_to have_content(belt.description)
     end
+
+    it 'shows errors when create a belt without name or description' do
+      kata = create_kata
+
+      visit kata_path(kata.id)
+      fill_in(:image, with: 'invalid_image')
+      click_on(add_belt_button)
+
+      expect(page).to have_content(empty_name_message)
+      expect(page).to have_content(empty_description_message)
+      expect(page).to have_content(wrong_url_image_format_message)
+    end
+
+    it 'shows errors when create a belt without name or description' do
+      kata = create_kata
+      belt = Belt.new(
+        name: 'Any',
+        description: 'Any',
+        kata: kata.id
+      )
+      belt.save
+
+      visit kata_path(kata.id)
+      click_on('mode_edit')
+      fill_in(:name, with: '')
+      fill_in(:description, with: '')
+      fill_in(:image, with: 'invalid_image')
+      click_on(save_belt_button)
+
+      expect(page).to have_content(empty_name_message)
+      expect(page).to have_content(empty_description_message)
+      expect(page).to have_content(wrong_url_image_format_message)
+    end
+
+    def save_belt_button
+      I18n.t(:save)
+    end
+
+    def add_belt_button
+      I18n.t(:add_belt)
+    end
+
+    def empty_name_message
+      I18n.t(:empty_name)
+    end
+
+    def empty_description_message
+      I18n.t(:empty_description)
+    end
+
+    def wrong_url_image_format_message
+      I18n.t(:wrong_url_image_format)
+    end
   end
 
   context 'when a user is logged' do

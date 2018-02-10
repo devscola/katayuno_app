@@ -1,3 +1,14 @@
+<% if @belt.errors.any? %>
+  <p>
+    <%= t(:errors_finded) %>
+    <ul>
+      <% @belt.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
+
 <section id="belts">
   <div class="container">
     <div class="row">
