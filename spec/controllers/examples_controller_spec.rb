@@ -54,9 +54,9 @@ describe ExamplesController do
 
   context 'when user login' do
     before do
-      user = User.new(email: 'user@test.com', password: '12345678')
-      user.save
-      sign_in(user)
+      @user = User.new(email: 'user@test.com', password: '12345678')
+      @user.save
+      sign_in(@user)
     end
 
     it 'GET index returns ok' do
@@ -64,6 +64,26 @@ describe ExamplesController do
       kata.save
 
       get :index, params: { kata_id: kata.id }
+
+      expect(response.code).to eq('200')
+    end
+
+    it 'GET edit returns a redirection for user that doesnt belongs' do
+      example = Example.new(text: 'Any', url: 'https://example.com', kata: 1, user: (@user.id + 1))
+      example.save
+      params = { id: example.id }
+
+      get :edit, params: params
+
+      expect(response.code).to eq('302')
+    end
+
+    it 'GET edit returns ok for user that belongs' do
+      example = Example.new(text: 'Any', url: 'https://example.com', kata: 1, user: @user.id)
+      example.save
+      params = { id: example.id }
+
+      get :edit, params: params
 
       expect(response.code).to eq('200')
     end
@@ -91,7 +111,7 @@ describe ExamplesController do
     end
 
     it 'GET edit returns ok' do
-      example = Example.new(kata: 1, text: 'any', url: 'https://any.com')
+      example = Example.new(kata: 1, text: 'any', url: 'https://any.com', user: @user.id)
       example.save
       params = { id: example.id }
 

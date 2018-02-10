@@ -2,6 +2,7 @@ class ExamplesController < ApplicationController
   before_action :authenticate_user!, only: [:update, :edit, :destroy]
   before_action :set_kata, only: [:index, :create]
   before_action :set_example, only: [:edit, :update, :destroy]
+  before_action :allowed_user!, only: [:edit, :update, :destroy]
 
   def index
     @examples = Example.for(@kata.id)
@@ -64,5 +65,13 @@ class ExamplesController < ApplicationController
 
   def set_example
     @example = Example.find(params[:id])
+  end
+
+  def allowed_user!
+    redirect_to examples_path(@example.kata) unless allowed_user?
+  end
+
+  def allowed_user?
+    !user_signed_in? || (current_user.id == @example.user || current_user.admin?)
   end
 end
