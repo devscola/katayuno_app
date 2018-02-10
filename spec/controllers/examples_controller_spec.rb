@@ -14,7 +14,7 @@ describe ExamplesController do
     it 'POST create returns a redirection' do
       kata = Kata.new(title: 'any', description: 'desc')
       kata.save
-      params = { kata_id: kata.id }
+      params = { kata_id: kata.id, text: 'Any', url: 'https://any.com' }
 
       post :create, params: params
 
@@ -71,7 +71,9 @@ describe ExamplesController do
     it 'POST create returns a redirection' do
       kata = Kata.new(title: 'any', description: 'desc')
       kata.save
-      params = { kata_id: kata.id }
+      example = Example.new(text: 'Any', url: 'https://example.com', kata: kata.id)
+      example.save
+      params = { kata_id: kata.id, text: 'New', url: 'https://new.com' }
 
       post :create, params: params
 
@@ -101,7 +103,7 @@ describe ExamplesController do
     it 'PATCH update returns a redirection' do
       example = Example.new(kata: 1, text: 'any', url: 'https://any.com')
       example.save
-      params = { id: example.id, example: { text: 'text' } }
+      params = { id: example.id, example: { text: 'text', url: example.url } }
 
       patch :update, params: params
 
@@ -128,7 +130,9 @@ describe ExamplesController do
     it 'POST create returns a redirection' do
       kata = Kata.new(title: 'any', description: 'desc')
       kata.save
-      params = { kata_id: kata.id }
+      example = Example.new(text: 'Any', url: 'https://example.com', kata: kata.id)
+      example.save
+      params = { kata_id: kata.id, text: 'New', url: 'https://new.com' }
 
       post :create, params: params
 
@@ -158,7 +162,7 @@ describe ExamplesController do
     it 'PATCH update returns a redirection' do
       example = Example.new(kata: 1, text: 'any', url: 'https://any.com')
       example.save
-      params = { id: example.id, example: { text: 'text' } }
+      params = { id: example.id, example: { text: 'text', url: example.url } }
 
       patch :update, params: params
 

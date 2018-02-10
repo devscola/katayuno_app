@@ -1,3 +1,13 @@
+<% if @example.errors.any? %>
+  <p>
+    <%= t(:errors_finded) %>
+    <ul>
+      <% @example.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
 <section id="examples">
   <div class="container">
     <div class="row">

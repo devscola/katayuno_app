@@ -16,6 +16,20 @@ describe 'Examples' do
     expect(page).to have_content(example_text)
   end
 
+  it 'shows errors when it doesnt have a text, url or wrong url' do
+    kata = create_kata
+
+    visit kata_path(kata.id)
+    click_on('Solution examples')
+    fill_in('text', with: '')
+    fill_in('url', with: '')
+    click_on('Add Example')
+
+    expect(page).to have_content(empty_text_message)
+    expect(page).to have_content(empty_url_message)
+    expect(page).to have_content(wrong_url_format_message)
+  end
+
   context 'when admin is logged' do
     before(:each) do
       log_in_admin
@@ -42,6 +56,20 @@ describe 'Examples' do
       click_on('Edit Example')
 
       expect(page).to have_content(edited_text)
+    end
+
+    it 'shows errors when it doesnt have a text, url or wrong url' do
+      example = create_example
+
+      visit examples_path(example.kata)
+      click_on('mode_edit')
+      fill_in(:example_text, with: '')
+      fill_in(:example_url, with: '')
+      click_on('Edit Example')
+
+      expect(page).to have_content(empty_text_message)
+      expect(page).to have_content(empty_url_message)
+      expect(page).to have_content(wrong_url_format_message)
     end
   end
 
@@ -86,5 +114,17 @@ describe 'Examples' do
     another_user = User.new(email: 'another_user@test.com', password: '12345678', password_confirmation: '12345678')
     another_user.save
     create_example_with_user(text, '', kata_id, another_user.id)
+  end
+
+  def empty_text_message
+    I18n.t(:empty_text)
+  end
+
+  def empty_url_message
+    I18n.t(:empty_url)
+  end
+
+  def wrong_url_format_message
+    I18n.t(:wrong_url_format)
   end
 end

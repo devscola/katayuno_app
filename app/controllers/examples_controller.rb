@@ -5,40 +5,47 @@ class ExamplesController < ApplicationController
 
   def index
     @examples = Example.for(@kata.id)
+    @example = Example.new
   end
 
   def create
     if current_user
-      user_id = current_user.id
       @example = Example.new(
         text: params[:text],
         url: params[:url],
         kata: @kata.id,
-        user: user_id
+        user: current_user.id
       )
-      @example.save
     else
       @example = Example.new(
         text: params[:text],
         url: params[:url],
         kata: @kata.id
       )
-      @example.save
     end
 
-    redirect_to examples_path(@kata.id)
+    if @example.save
+      redirect_to examples_path(@kata.id)
+    else
+      @examples = Example.for(@kata.id)
+      render :index
+    end
   end
 
   def edit
   end
 
   def update
-    @example.update(
+    result = @example.update(
       text: params[:example][:text],
       url: params[:example][:url]
     )
 
-    redirect_to examples_path(@example.kata)
+    if result
+      redirect_to examples_path(@example.kata)
+    else
+      render :edit
+    end
   end
 
   def destroy

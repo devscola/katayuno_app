@@ -8,12 +8,18 @@
             <li><%= link_to(example.text, example.url, target: "_blank") %> <%= edit_example(example.id) %> <%= delete_example(example.id) %></li>
           <% end %>
         </ul>
+        <% if @example.errors.any? %>
+          <%= t(:errors_finded) %>
+          <% @example.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        <% end %>
         <p>
           <%= form_tag(example_path(@kata.id), method: :post) do %>
             <%= label_tag t(:text) %>
-            <%= text_field_tag :text %>
+            <%= text_field_tag :text, @example.text %>
             <%= label_tag t(:url) %>
-            <%= text_field_tag :url %>
+            <%= text_field_tag :url, @example.url %>
             <p class="field-explanation">
               <%= t(:url_explanation) %>
             </p>
