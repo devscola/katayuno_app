@@ -11,11 +11,9 @@
 
 <%= form_for(@kata) do |f| %>
   <p><%= f.label t(:title) %></p>
-  <p><%= f.text_field(:title, class: 'kata-title') %></p>
+  <p><%= f.text_field(:title) %></p>
   <p><%= f.label t(:description) %></p>
-  <p><%= f.text_area(:description, class: 'kata-description') %></p>
-  <p class="field-explanation">
-    <%= t(:description_explanation) %>
-  </p>
+  <p><%= f.text_area(:description) %></p>
+  <p><%= t(:description_explanation) %></p>
   <p><%= f.submit t(:save) %></p>
 <% end %>

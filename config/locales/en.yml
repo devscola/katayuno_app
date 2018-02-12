@@ -3,6 +3,7 @@ en:
   log_in: 'Log in'
   log_out: 'Log out'
   admin_users: 'Admin Users'
+  users: 'Users'
   add_kata: 'Add Kata'
   edit: 'Edit'
   delete: 'Delete'
@@ -52,3 +53,4 @@ en:
   wrong_url_image_format: 'Image has to be an URL with an image in jpg or png'
   empty_name: 'It has to have a name'
   errors_finded: 'Has been found some errors:'
+  confirm: "Are you sure?"

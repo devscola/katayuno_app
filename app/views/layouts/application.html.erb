@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KatayunoApp</title>
+    <title>Katayuno</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,35 +12,21 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">Katayuno</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/"><%= t(:home) %></a>
-            </li>
-            <li class="nav-item active">
-              <%= admin_users %>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="#"><%= logged_user %></a>
-            </li>
-            <li class="nav-item active">
-              <%= session_actions %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <a href="/">Katayuno</a>
+    <ul>
+      <li>
+        <a href="/"><%= t(:home) %></a>
+      </li>
+      <li>
+        <%= admin_users %>
+      </li>
+      <li>
+        <a href="#"><%= logged_user %></a>
+      </li>
+      <li>
+        <%= session_actions %>
+      </li>
+    </ul>
     <%= yield %>
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white"><a href="http://www.devscola.org">Devscola</a></p>
-      </div>
-    </footer>
   </body>
 </html>

@@ -9,32 +9,20 @@
   </p>
 <% end %>
 
-<section id="belts">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="mt-5"><%= t(:edit_belt) %></h1>
-        <p>
-          <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
-            <p><%= label_tag t(:name) %></p>
-            <p><%= text_field_tag(:name, @belt.name, class: 'belt-name') %></p>
-            <p><%= label_tag t(:image) %></p>
-            <p><%= text_field_tag(:image, @belt.image, class: 'belt-image') %></p>
-            <p class="field-explanation">
-              <%= t(:image_explanation) %>
-            </p>
-            <p><%= label_tag t(:description) %></p>
-            <p><%= text_area_tag(:description, @belt.description, class: 'belt-description') %></p>
-            <p class="field-explanation">
-              <%= t(:description_explanation) %>
-            </p>
-            <p><%= submit_tag t(:save) %></p>
-          <% end %>
-        </p>
-        <p>
-          <%= link_to(t(:back), kata_path(@belt.kata)) %>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<h2><%= t(:edit_belt) %></h2>
+<p>
+  <%= form_tag(update_belt_path(@belt.id), method: :patch) do %>
+    <p><%= label_tag t(:name) %></p>
+    <p><%= text_field_tag(:name, @belt.name) %></p>
+    <p><%= label_tag t(:image) %></p>
+    <p><%= text_field_tag(:image, @belt.image) %></p>
+    <p><%= t(:image_explanation) %></p>
+    <p><%= label_tag t(:description) %></p>
+    <p><%= text_area_tag(:description, @belt.description) %></p>
+    <p><%= t(:description_explanation) %></p>
+    <p><%= submit_tag t(:save) %></p>
+  <% end %>
+</p>
+<p>
+  <%= link_to(t(:back), kata_path(@belt.kata)) %>
+</p>

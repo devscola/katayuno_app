@@ -1,15 +1,7 @@
-<section id="kata">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="mt-5"><%= "#{t(:edit)} #{@kata.title}" %></h1>
-        <p>
-          <%= render 'form', note: @kata %>
-        </p>
-        <p>
-          <%= link_to(t(:back), root_path) %>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<h2><%= "#{t(:edit)} #{@kata.title}" %></h2>
+<p>
+  <%= render 'form', note: @kata %>
+</p>
+<p>
+  <%= link_to(t(:back), root_path) %>
+</p>

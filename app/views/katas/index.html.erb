@@ -1,32 +1,24 @@
-<section id="katas">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="mt-5">Katayuno</h1>
-        <p class="lead"><%= t(:the_katayuno_explanation).html_safe %></p>
-        <h2><%= t(:the_kata) %></h2>
-        <p class="lead"><%= t(:the_kata_explanation) %></p>
-        <h2><%= t(:the_tdd) %></h2>
-        <p class="lead"><%= t(:the_tdd_explanation) %></p>
-        <h2><%= t(:the_pairing) %></h2>
-        <p class="lead"><%= t(:the_pairing_explanation) %></p>
-        <h2><%= t(:the_language) %></h2>
-        <p class="lead"><%= t(:the_language_explanation) %></p>
-        <h2>The meetup</h2>
-        <p class="lead"><%= t(:the_meetup_explanation).html_safe %></p>
-        <h1 class="mt-5">Kata-logue</h1>
-        <p class="lead">
-          <%= t(:the_examples_explanation) %>
-          <p>
-            <ul>
-              <%= render 'katas_links', note: @katas %>
-            </lu>
-          </p>
-          <p>
-            <%= add_kata_button %>
-          </p>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<h2>Katayuno</h2>
+<p><%= t(:the_katayuno_explanation).html_safe %></p>
+<h3><%= t(:the_kata) %></h3>
+<p><%= t(:the_kata_explanation) %></p>
+<h3><%= t(:the_tdd) %></h3>
+<p><%= t(:the_tdd_explanation) %></p>
+<h3><%= t(:the_pairing) %></h3>
+<p><%= t(:the_pairing_explanation) %></p>
+<h3><%= t(:the_language) %></h3>
+<p><%= t(:the_language_explanation) %></p>
+<h3>The meetup</h3>
+<p><%= t(:the_meetup_explanation).html_safe %></p>
+<h2>Kata-logue</h2>
+<p>
+  <%= t(:the_examples_explanation) %>
+  <p>
+    <ul>
+      <%= render 'katas_links', note: @katas %>
+    </lu>
+  </p>
+  <p>
+    <%= add_kata_button %>
+  </p>
+</p>

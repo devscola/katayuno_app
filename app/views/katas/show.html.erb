@@ -1,46 +1,38 @@
-<section id="kata">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="mt-5"><%= @kata.title %></h1>
-        <p>
-          <p><%= @kata.description.html_safe %></p>
-          <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
-          <% if admin_signed_in? %>
-            <div class="alert alert-info" role="alert">
-              <%= t(:belts_order_explanation) %>
-            </div>
-          <% end %>
-          <p>
-            <% @belts.each do |belt| %>
-              <p>
-                <table class="belt-table">
-                  <tr>
-                    <th rowspan="2">
-                      <%= image_tag(belt.image, { class: 'belt-resize-image' }) %>
-                    </th>
-                    <th>
-                      <%= belt.name %>
-                      <%= edit_belt_button(belt.id) %>
-                      <%= delete_belt_button(belt.id) %>
-                    </th>
-                  </tr>
-                  <tr>
-                    <td class="belt-description">
-                      <%= belt.description.html_safe %>
-                    </td>
-                  </tr>
-                </table>
-              </p>
-            <% end %>
-          </p>
-          <%= render 'katas/new_belt', note: @belt %>
-        </p>
-        <p>
-          <%= link_to(t(:back), root_path) %>
-        </p>
-      </div>
+<h2><%= @kata.title %></h2>
+<p>
+  <p><%= @kata.description.html_safe %></p>
+  <p><%= link_to(t(:examples), examples_path(@kata.id)) %></p>
+  <% if admin_signed_in? %>
+    <div role="alert">
+      <%= t(:belts_order_explanation) %>
     </div>
-  </div>
-</section>
+  <% end %>
+  <p>
+    <% @belts.each do |belt| %>
+      <p>
+        <table>
+          <tr>
+            <th rowspan="2">
+              <%= image_tag(belt.image, { class: 'belt-resize-image' }) %>
+            </th>
+            <th>
+              <%= belt.name %>
+              <%= edit_belt_button(belt.id) %>
+              <%= delete_belt_button(belt.id) %>
+            </th>
+          </tr>
+          <tr>
+            <td>
+              <%= belt.description.html_safe %>
+            </td>
+          </tr>
+        </table>
+      </p>
+    <% end %>
+  </p>
+  <%= render 'katas/new_belt', note: @belt %>
+</p>
+<p>
+  <%= link_to(t(:back), root_path) %>
+</p>
 

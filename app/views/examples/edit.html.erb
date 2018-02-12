@@ -8,24 +8,14 @@
     </ul>
   </p>
 <% end %>
-<section id="examples">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <%= form_for(@example, url: update_example_path(@example.id)) do |f| %>
-          <p><%= f.label t(:text) %></p>
-          <p><%= f.text_field :text %></p>
-          <p><%= f.label t(:url) %></p>
-          <p><%= f.text_field :url %></p>
-          <p class="field-explanation">
-            <%= t(:url_explanation) %>
-          </p>
-          <p><%= f.submit t(:edit_example) %></p>
-        <% end %>
-        <p>
-          <%= link_to(t(:back), examples_path(@example.kata)) %>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<%= form_for(@example, url: update_example_path(@example.id)) do |f| %>
+  <p><%= f.label t(:text) %></p>
+  <p><%= f.text_field :text %></p>
+  <p><%= f.label t(:url) %></p>
+  <p><%= f.text_field :url %></p>
+  <p><%= t(:url_explanation) %></p>
+  <p><%= f.submit t(:edit_example) %></p>
+<% end %>
+<p>
+  <%= link_to(t(:back), examples_path(@example.kata)) %>
+</p>

@@ -1,35 +1,25 @@
-<section id="examples">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="mt-5"><%= "#{@kata.title}'s #{t(:examples)}" %></h1>
-        <ul>
-          <% @examples.each do |example| %>
-            <li><%= link_to(example.text, example.url, target: "_blank") %> <%= edit_example(example.id) %> <%= delete_example(example.id) %></li>
-          <% end %>
-        </ul>
-        <% if @example.errors.any? %>
-          <%= t(:errors_finded) %>
-          <% @example.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        <% end %>
-        <p>
-          <%= form_tag(example_path(@kata.id), method: :post) do %>
-            <%= label_tag t(:text) %>
-            <%= text_field_tag :text, @example.text %>
-            <%= label_tag t(:url) %>
-            <%= text_field_tag :url, @example.url %>
-            <p class="field-explanation">
-              <%= t(:url_explanation) %>
-            </p>
-            <%= submit_tag t(:add_example) %>
-          <% end %>
-        </p>
-        <p>
-          <%= link_to(t(:back), kata_path(@kata.id)) %>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<h2><%= "#{@kata.title}'s #{t(:examples)}" %></h2>
+<ul>
+  <% @examples.each do |example| %>
+    <li><%= link_to(example.text, example.url, target: "_blank") %> <%= edit_example(example.id) %> <%= delete_example(example.id) %></li>
+  <% end %>
+</ul>
+<% if @example.errors.any? %>
+  <%= t(:errors_finded) %>
+  <% @example.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+<p>
+  <%= form_tag(example_path(@kata.id), method: :post) do %>
+    <%= label_tag t(:text) %>
+    <%= text_field_tag :text, @example.text %>
+    <%= label_tag t(:url) %>
+    <%= text_field_tag :url, @example.url %>
+    <p><%= t(:url_explanation) %></p>
+    <%= submit_tag t(:add_example) %>
+  <% end %>
+</p>
+<p>
+  <%= link_to(t(:back), kata_path(@kata.id)) %>
+</p>

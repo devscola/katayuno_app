@@ -14,17 +14,13 @@
     <%= content_tag(:h2) { t(:add_belt) } %>
     <%= form_tag(belt_path(@kata.id), method: :post) do %>
       <p><%= label_tag t(:name) %></p>
-      <p><%= text_field_tag(:name, @belt.name, class: 'belt-name') %></p>
+      <p><%= text_field_tag(:name, @belt.name) %></p>
       <p><%= label_tag t(:image) %></p>
-      <p><%= text_field_tag(:image, @belt.image, class: 'belt-image') %></p>
-      <p class="field-explanation">
-        <%= t(:image_explanation) %>
-      </p>
+      <p><%= text_field_tag(:image, @belt.image) %></p>
+      <p><%= t(:image_explanation) %></p>
       <p><%= label_tag t(:description) %></p>
-      <p><%= text_area_tag(:description, @belt.description, class: 'belt-description') %></p>
-      <p class="field-explanation">
-        <%= t(:description_explanation) %>
-      </p>
+      <p><%= text_area_tag(:description, @belt.description) %></p>
+      <p><%= t(:description_explanation) %></p>
       <p><%= submit_tag t(:add_belt) %></p>
     <% end %>
   </p>
